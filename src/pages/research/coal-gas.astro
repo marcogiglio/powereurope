@@ -393,16 +393,79 @@ import ScrollySection from '../../components/ScrollySection.astro';
   </section>
 
   <!-- Sources -->
-  <section class="py-12 border-t border-ink-200">
+  <section class="section border-t border-ink-200">
     <div class="container-narrow">
-      <p class="font-semibold mb-4">Sources</p>
-      <ul class="text-sm text-ink-600 space-y-1">
-        <li>Eurostat — Energy Statistics 2023-2025</li>
-        <li>Euracoal — Coal in Europe: Reserves and Market 2025</li>
-        <li>IEA — Coal and Gas Market Reports 2023</li>
-        <li>Trinomics for EU Commission — Energy Cost Assessment 2020</li>
-        <li>MIT Climate Portal — Coal vs Gas Emissions 2023</li>
-      </ul>
+      <h2 class="text-display-sm mb-6">References</h2>
+
+      <div class="space-y-8">
+        <div>
+          <p class="font-semibold mb-3">Primary Data Sources</p>
+          <ul class="text-sm text-ink-600 space-y-2">
+            <li><a href="https://ec.europa.eu/eurostat/web/energy/database" class="underline">Eurostat Energy Statistics Database</a> — EU energy balances, prices, import dependency (2023-2025)</li>
+            <li><a href="https://www.iea.org/reports/coal-2023" class="underline">IEA Coal 2023</a> — Global coal demand, trade, and prices</li>
+            <li><a href="https://www.iea.org/reports/gas-market-report-q4-2023" class="underline">IEA Gas Market Report Q4 2023</a> — European gas supply, LNG imports, storage</li>
+            <li><a href="https://www.eia.gov/naturalgas/" class="underline">US EIA Natural Gas Data</a> — US LNG exports, pricing benchmarks</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="font-semibold mb-3">Cost & Economics</p>
+          <ul class="text-sm text-ink-600 space-y-2">
+            <li>Trinomics for European Commission (2020). <em>Energy Costs, Taxes and the Impact of Government Interventions on Investments</em>. <a href="https://energy.ec.europa.eu/publications/final-report-energy-costs-taxes-and-impact-government-interventions-investments_en" class="underline">Link</a></li>
+            <li>Lazard (2023). <em>Levelized Cost of Energy Analysis—Version 16.0</em>. <a href="https://www.lazard.com/research-insights/levelized-cost-of-energyplus/" class="underline">Link</a></li>
+            <li>European Commission (2024). <em>Quarterly Report on European Electricity Markets</em>. <a href="https://energy.ec.europa.eu/data-and-analysis/market-analysis_en" class="underline">Link</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="font-semibold mb-3">Coal Industry</p>
+          <ul class="text-sm text-ink-600 space-y-2">
+            <li><a href="https://euracoal.eu/info/country-profiles/" class="underline">EURACOAL Country Profiles</a> — EU coal production, reserves, plant capacity</li>
+            <li>EURACOAL (2025). <em>Coal in Europe 2025: Reserves and Market Overview</em></li>
+            <li>BP Statistical Review of World Energy (2023). Coal production and consumption data</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="font-semibold mb-3">Gas Infrastructure</p>
+          <ul class="text-sm text-ink-600 space-y-2">
+            <li><a href="https://www.gie.eu/transparency/databases/lng-database/" class="underline">GIE LNG Database</a> — European LNG terminal capacity and utilization</li>
+            <li><a href="https://agsi.gie.eu/" class="underline">AGSI+ Gas Storage Inventory</a> — EU gas storage levels</li>
+            <li>European Network of Transmission System Operators for Gas (ENTSOG). <em>Ten-Year Network Development Plan 2022</em></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="font-semibold mb-3">Emissions & Environment</p>
+          <ul class="text-sm text-ink-600 space-y-2">
+            <li><a href="https://climate.mit.edu/explainers/natural-gas" class="underline">MIT Climate Portal — Natural Gas</a> — Lifecycle emissions comparison</li>
+            <li>IPCC (2022). <em>Climate Change 2022: Mitigation of Climate Change</em>. Working Group III contribution</li>
+            <li><a href="https://www.eea.europa.eu/themes/air" class="underline">European Environment Agency — Air Quality</a> — Coal plant emissions data</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="font-semibold mb-3">Policy & Regulation</p>
+          <ul class="text-sm text-ink-600 space-y-2">
+            <li>European Commission (2022). <em>REPowerEU Plan</em>. <a href="https://commission.europa.eu/strategy-and-policy/priorities-2019-2024/european-green-deal/repowereu-affordable-secure-and-sustainable-energy-europe_en" class="underline">Link</a></li>
+            <li><a href="https://climate.ec.europa.eu/eu-action/eu-emissions-trading-system-eu-ets_en" class="underline">EU Emissions Trading System (EU ETS)</a> — Carbon pricing mechanism</li>
+            <li>Ember Climate (2024). <em>European Electricity Review</em>. <a href="https://ember-climate.org/insights/research/european-electricity-review-2024/" class="underline">Link</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="font-semibold mb-3">News & Analysis</p>
+          <ul class="text-sm text-ink-600 space-y-2">
+            <li>Nolting, N. (2023). "Lützerath: Climate activists clash with police over German coal mine expansion." <em>The Guardian</em>. <a href="https://www.theguardian.com/world/2023/jan/14/german-police-begin-clearing-climate-protesters-from-lutzerath" class="underline">Link</a></li>
+            <li>Reuters Energy News — EU energy crisis coverage (2022-2024)</li>
+            <li><a href="https://www.pci-energy.com/" class="underline">PCI Energy Solutions</a> — Power plant flexibility analysis</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="text-sm text-ink-500 mt-10 border-t border-ink-200 pt-6">
+        Data reflects publicly available information as of January 2026. Energy prices and infrastructure status are subject to rapid change. This analysis presents one policy scenario; actual EU policy may differ significantly.
+      </p>
     </div>
   </section>
 </BaseLayout>

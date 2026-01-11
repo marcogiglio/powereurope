@@ -401,14 +401,69 @@ import ScrollySection from '../../components/ScrollySection.astro';
   <!-- Sources -->
   <section class="section border-t border-ink-200">
     <div class="container-narrow">
-      <p class="font-semibold mb-4">Sources</p>
-      <ul class="text-sm text-ink-600 space-y-2">
-        <li>World Nuclear Association — Reactor designs, economics, safety, fuel cycles</li>
-        <li>International Atomic Energy Agency (IAEA) — Safety reports, PRIS database</li>
-        <li>World Nuclear News, NucNet — Industry status updates</li>
-        <li>IEA World Energy Outlook 2023 — LCOE estimates</li>
-        <li>Vendor technical documentation</li>
-      </ul>
+      <h2 class="text-display-sm mb-6">References</h2>
+
+      <div class="space-y-8">
+        <div>
+          <p class="font-semibold mb-3">Primary Data Sources</p>
+          <ul class="text-sm text-ink-600 space-y-2">
+            <li><a href="https://pris.iaea.org/pris/" class="underline">IAEA Power Reactor Information System (PRIS)</a> — Global reactor database, capacity factors, operational status</li>
+            <li><a href="https://world-nuclear.org/information-library" class="underline">World Nuclear Association Information Library</a> — Reactor designs, country profiles, economics</li>
+            <li><a href="https://www.iea.org/reports/world-energy-outlook-2023" class="underline">IEA World Energy Outlook 2023</a> — LCOE estimates, capacity projections</li>
+            <li><a href="https://www.eia.gov/outlooks/aeo/" class="underline">US EIA Annual Energy Outlook 2024</a> — US nuclear cost estimates</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="font-semibold mb-3">Reactor Economics</p>
+          <ul class="text-sm text-ink-600 space-y-2">
+            <li>MIT Energy Initiative (2018). <em>The Future of Nuclear Energy in a Carbon-Constrained World</em>. <a href="https://energy.mit.edu/research/future-nuclear-energy-carbon-constrained-world/" class="underline">Link</a></li>
+            <li>Lazard (2023). <em>Levelized Cost of Energy Analysis—Version 16.0</em>. <a href="https://www.lazard.com/research-insights/levelized-cost-of-energyplus/" class="underline">Link</a></li>
+            <li>OECD NEA (2020). <em>Projected Costs of Generating Electricity 2020</em>. <a href="https://www.oecd-nea.org/jcms/pl_51110" class="underline">Link</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="font-semibold mb-3">Safety & Regulation</p>
+          <ul class="text-sm text-ink-600 space-y-2">
+            <li>US NRC (2022). <em>NuScale Small Modular Reactor Design Certification</em>. <a href="https://www.nrc.gov/reactors/new-reactors/smr/nuscale.html" class="underline">Link</a></li>
+            <li>IAEA Safety Standards Series No. SSR-2/1 (2016). <em>Safety of Nuclear Power Plants: Design</em></li>
+            <li>EUR (European Utility Requirements) Document, Rev. E (2017). Nuclear Plant Design Requirements</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="font-semibold mb-3">Advanced Reactors</p>
+          <ul class="text-sm text-ink-600 space-y-2">
+            <li>Generation IV International Forum (2023). <em>Annual Report</em>. <a href="https://www.gen-4.org/" class="underline">Link</a></li>
+            <li>US DOE Office of Nuclear Energy. <em>Advanced Reactor Demonstration Program</em>. <a href="https://www.energy.gov/ne/advanced-reactor-demonstration-program" class="underline">Link</a></li>
+            <li>TerraPower. <em>Natrium Technology</em>. <a href="https://www.terrapower.com/our-work/natriumpower/" class="underline">Link</a></li>
+            <li>X-energy. <em>Xe-100 Reactor</em>. <a href="https://x-energy.com/reactors/xe-100" class="underline">Link</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="font-semibold mb-3">Fuel Cycle & Waste</p>
+          <ul class="text-sm text-ink-600 space-y-2">
+            <li>Posiva Oy. <em>Onkalo Spent Nuclear Fuel Repository</em>. <a href="https://www.posiva.fi/en" class="underline">Link</a></li>
+            <li>World Nuclear Association (2023). <em>Radioactive Waste Management</em>. <a href="https://world-nuclear.org/information-library/nuclear-fuel-cycle/nuclear-waste/radioactive-waste-management" class="underline">Link</a></li>
+            <li>IAEA (2022). <em>Status and Trends in Spent Fuel and Radioactive Waste Management</em>. NW-T-1.14 (Rev. 1)</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="font-semibold mb-3">Industry News & Updates</p>
+          <ul class="text-sm text-ink-600 space-y-2">
+            <li><a href="https://world-nuclear-news.org/" class="underline">World Nuclear News</a></li>
+            <li><a href="https://www.nucnet.org/" class="underline">NucNet — The Independent Nuclear News Agency</a></li>
+            <li><a href="https://www.ans.org/news/" class="underline">American Nuclear Society News</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="text-sm text-ink-500 mt-10 border-t border-ink-200 pt-6">
+        Data in this report reflects publicly available information as of January 2026. Reactor specifications and project timelines are subject to change. For the most current data, consult the IAEA PRIS database and official vendor documentation.
+      </p>
     </div>
   </section>
 </BaseLayout>
