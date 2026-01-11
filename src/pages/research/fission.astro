@@ -1,0 +1,476 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ScrollySection from '../../components/ScrollySection.astro';
+---
+
+<BaseLayout
+  title="Cutting-Edge Fission Reactor Technologies | PowerEurope"
+  description="A comprehensive analysis of Generation III/III+ reactors, SMRs, and advanced designs - their economics, safety, and fuel cycles."
+>
+  <!-- Hero -->
+  <header class="py-20 md:py-32 border-b border-ink-200">
+    <div class="container-narrow">
+      <p class="label mb-6">Research</p>
+      <h1 class="mb-8">Cutting-Edge Fission Reactor Technologies</h1>
+      <p class="text-xl md:text-2xl text-ink-600 leading-relaxed max-w-xl font-serif">
+        Current status and outlook for Generation III/III+, Small Modular Reactors, and advanced designs across Europe, the US, and China.
+      </p>
+      <div class="mt-8 flex items-center gap-4 text-sm text-ink-500">
+        <span>January 2026</span>
+        <span class="text-ink-300">·</span>
+        <span>30 min read</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Intro -->
+  <section class="section border-b border-ink-200">
+    <div class="container-narrow">
+      <div class="prose">
+        <p>
+          Nuclear fission technology is evolving through successive "generations" of reactor designs. This report analyzes three categories of reactors: those <strong>commercially deployed today</strong> (Category 1), designs that are <strong>licensed but not yet widely deployed</strong> (Category 2), and <strong>advanced reactors in late-stage demonstration</strong> (Category 3).
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reactor Categories Scrolly -->
+  <section class="border-b border-ink-200">
+    <ScrollySection id="categories-scrolly" graphicPosition="right">
+      <div slot="graphic">
+        <div class="w-full max-w-md">
+          <div id="category-display" class="text-center">
+            <div class="mb-6">
+              <p class="text-stat" id="category-number">1</p>
+              <p class="text-display-sm mt-2" id="category-name">Commercially Deployed</p>
+            </div>
+            <div id="reactor-list" class="text-left border border-ink-200 p-6 bg-white">
+              <p class="label mb-4">Key Reactors</p>
+              <ul class="space-y-2 text-sm" id="reactor-items">
+                <li class="flex justify-between"><span>AP1000</span><span class="text-ink-500">1,150 MW</span></li>
+                <li class="flex justify-between"><span>EPR</span><span class="text-ink-500">1,600 MW</span></li>
+                <li class="flex justify-between"><span>Hualong One</span><span class="text-ink-500">1,090 MW</span></li>
+                <li class="flex justify-between"><span>VVER-1200</span><span class="text-ink-500">1,200 MW</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div slot="steps" class="py-20 lg:py-40">
+        <div class="step px-5 lg:px-10 min-h-[80vh] lg:min-h-screen flex items-center" data-step="0" data-category="1">
+          <div class="bg-white p-8 lg:p-10 border border-ink-200 max-w-md">
+            <p class="label mb-3">Category 1</p>
+            <h3 class="text-display-sm mb-4">Commercially Deployed</h3>
+            <p class="text-ink-600 font-serif text-lg leading-relaxed mb-4">
+              Generation III/III+ reactors already in commercial operation worldwide. Includes large LWRs with enhanced safety: AP1000, EPR, VVER-1200, APR1400, and Hualong One.
+            </p>
+            <p class="text-sm text-ink-500">
+              First grid connections: 2016 (VVER-1200), 2018 (AP1000, EPR), 2020 (Hualong One)
+            </p>
+          </div>
+        </div>
+
+        <div class="step px-5 lg:px-10 min-h-[80vh] lg:min-h-screen flex items-center" data-step="1" data-category="2">
+          <div class="bg-white p-8 lg:p-10 border border-ink-200 max-w-md">
+            <p class="label mb-3">Category 2</p>
+            <h3 class="text-display-sm mb-4">Licensed, Limited Deployment</h3>
+            <p class="text-ink-600 font-serif text-lg leading-relaxed mb-4">
+              Designs that have completed regulatory licensing but have few or no commercial units operating. Many are SMRs awaiting first-of-a-kind deployment.
+            </p>
+            <p class="text-sm text-ink-500">
+              Key examples: NuScale VOYGR (first SMR certified by NRC), BWRX-300, Rolls-Royce SMR
+            </p>
+          </div>
+        </div>
+
+        <div class="step px-5 lg:px-10 min-h-[80vh] lg:min-h-screen flex items-center" data-step="2" data-category="3">
+          <div class="bg-white p-8 lg:p-10 border border-ink-200 max-w-md">
+            <p class="label mb-3">Category 3</p>
+            <h3 class="text-display-sm mb-4">Advanced Demonstrations</h3>
+            <p class="text-ink-600 font-serif text-lg leading-relaxed mb-4">
+              Generation IV reactors in prototype or demonstration phase. New coolant types, fuel forms, and operating regimes for improved economics, safety, and sustainability.
+            </p>
+            <p class="text-sm text-ink-500">
+              Includes: Sodium Fast Reactors, Molten Salt Reactors, Lead-Cooled Reactors, High-Temperature Gas Reactors
+            </p>
+          </div>
+        </div>
+      </div>
+    </ScrollySection>
+  </section>
+
+  <!-- Key Stats -->
+  <section class="section border-b border-ink-200 bg-ink-950 text-white">
+    <div class="container-wide">
+      <h2 class="text-display-sm text-white mb-10">Category 1: Economic Performance</h2>
+      <div class="grid md:grid-cols-4 gap-8 md:gap-6">
+        <div class="border-t-2 border-white pt-4">
+          <p class="text-stat text-white">$1,200</p>
+          <p class="text-ink-300 mt-2">Overnight cost per kW (Russia VVER domestic)</p>
+        </div>
+        <div class="border-t-2 border-white pt-4">
+          <p class="text-stat text-white">$3,500</p>
+          <p class="text-ink-300 mt-2">Overnight cost per kW (China Hualong One)</p>
+        </div>
+        <div class="border-t-2 border-white pt-4">
+          <p class="text-stat text-white">5-6 yrs</p>
+          <p class="text-ink-300 mt-2">Construction time (Asia, standardized)</p>
+        </div>
+        <div class="border-t-2 border-white pt-4">
+          <p class="text-stat text-white">$63</p>
+          <p class="text-ink-300 mt-2">LCOE per MWh (IEA 2023 average)</p>
+        </div>
+      </div>
+      <p class="text-xs text-ink-500 mt-10">Western FOAK projects significantly higher: Hinkley Point C ~$8,000-10,000/kW due to delays</p>
+    </div>
+  </section>
+
+  <!-- Deployed Reactors Table -->
+  <section class="section border-b border-ink-200">
+    <div class="container-wide">
+      <h2 class="text-display-sm mb-4">Category 1 Reactors: Global Deployment</h2>
+      <p class="text-ink-600 font-serif text-lg mb-10 max-w-2xl">
+        Generation III/III+ reactors are being deployed primarily in Asia, with slower progress in the West due to first-of-a-kind challenges.
+      </p>
+
+      <div class="overflow-x-auto -mx-5 px-5">
+        <table class="data-table text-sm">
+          <thead>
+            <tr>
+              <th>Reactor</th>
+              <th>Type</th>
+              <th>Capacity</th>
+              <th>Deployments</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-medium">AP1000</td>
+              <td>Gen III+ PWR</td>
+              <td>~1,150 MW</td>
+              <td>China (4), USA (2), UK (planned)</td>
+              <td>Online 2018 (CN), 2023 (US)</td>
+            </tr>
+            <tr>
+              <td class="font-medium">EPR</td>
+              <td>Gen III+ PWR</td>
+              <td>1,600-1,750 MW</td>
+              <td>China (2), Finland (1), France (1), UK (2 u/c)</td>
+              <td>Online 2018 (CN)</td>
+            </tr>
+            <tr>
+              <td class="font-medium">APR-1400</td>
+              <td>Gen III PWR</td>
+              <td>~1,400 MW</td>
+              <td>South Korea (4), UAE (4)</td>
+              <td>Online 2016 (KR), 2020 (UAE)</td>
+            </tr>
+            <tr>
+              <td class="font-medium">VVER-1200</td>
+              <td>Gen III+ PWR</td>
+              <td>~1,200 MW</td>
+              <td>Russia, Belarus, Turkey (u/c), Bangladesh (u/c)</td>
+              <td>Online 2016 (RU)</td>
+            </tr>
+            <tr>
+              <td class="font-medium">Hualong One</td>
+              <td>Gen III+ PWR</td>
+              <td>~1,090 MW</td>
+              <td>China, Pakistan</td>
+              <td>Online 2020 (CN), 2021 (PK)</td>
+            </tr>
+            <tr>
+              <td class="font-medium">BN-800</td>
+              <td>Fast Reactor</td>
+              <td>~880 MW</td>
+              <td>Russia (1)</td>
+              <td>Online 2016 (prototype)</td>
+            </tr>
+            <tr>
+              <td class="font-medium">HTR-PM</td>
+              <td>HTGR</td>
+              <td>2×105 MW</td>
+              <td>China (1)</td>
+              <td>Grid 2022 (pilot)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Safety Scrolly -->
+  <section class="border-b border-ink-200">
+    <ScrollySection id="safety-scrolly" graphicPosition="left">
+      <div slot="graphic">
+        <div class="w-full max-w-md text-center">
+          <p class="label mb-6">Core Damage Frequency</p>
+          <div id="safety-visual" class="relative">
+            <div class="text-stat" id="cdf-value">10⁻⁵</div>
+            <p class="text-ink-600 mt-2" id="cdf-label">per reactor-year (Gen III+)</p>
+            <div class="mt-8 h-40 flex items-end justify-center gap-4" id="safety-bars">
+              <div class="w-16 bg-ink-300 transition-all duration-500" style="height: 100%;" data-gen="2">
+                <p class="text-xs mt-2 text-center">Gen II</p>
+              </div>
+              <div class="w-16 bg-ink-950 transition-all duration-500" style="height: 10%;" data-gen="3">
+                <p class="text-xs mt-2 text-center">Gen III+</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div slot="steps" class="py-20 lg:py-40">
+        <div class="step px-5 lg:px-10 min-h-[80vh] lg:min-h-screen flex items-center" data-step="0" data-safety="passive">
+          <div class="bg-white p-8 lg:p-10 border border-ink-200 max-w-md lg:ml-auto">
+            <h3 class="text-display-sm mb-4">Passive Safety Systems</h3>
+            <p class="text-ink-600 font-serif text-lg leading-relaxed mb-4">
+              Gen III+ reactors use gravity-driven water flow and natural convection for emergency cooling. The AP1000 requires <strong>no pumps or AC power</strong> for at least 72 hours after shutdown.
+            </p>
+            <p class="text-sm text-ink-500">
+              The EPR features a core-catcher to passively contain melted core material in severe accidents.
+            </p>
+          </div>
+        </div>
+
+        <div class="step px-5 lg:px-10 min-h-[80vh] lg:min-h-screen flex items-center" data-step="1" data-safety="htgr">
+          <div class="bg-white p-8 lg:p-10 border border-ink-200 max-w-md lg:ml-auto">
+            <h3 class="text-display-sm mb-4">Meltdown-Proof by Design</h3>
+            <p class="text-ink-600 font-serif text-lg leading-relaxed mb-4">
+              High-Temperature Gas Reactors use TRISO fuel particles that <strong>cannot melt</strong>. Decay heat is removed passively by conduction and radiation.
+            </p>
+            <p class="text-sm text-ink-500">
+              Tests have demonstrated: stopping all cooling results in passive cooldown with no fuel damage.
+            </p>
+          </div>
+        </div>
+
+        <div class="step px-5 lg:px-10 min-h-[80vh] lg:min-h-screen flex items-center" data-step="2" data-safety="security">
+          <div class="bg-white p-8 lg:p-10 border border-ink-200 max-w-md lg:ml-auto">
+            <h3 class="text-display-sm mb-4">Physical Protection</h3>
+            <p class="text-ink-600 font-serif text-lg leading-relaxed mb-4">
+              Modern containments withstand large aircraft crashes. The EPR has double-walled concrete containment with aircraft-impact resistant safety buildings.
+            </p>
+            <p class="text-sm text-ink-500">
+              Security-by-design: fewer systems to tamper with, vital equipment inside robust containment.
+            </p>
+          </div>
+        </div>
+      </div>
+    </ScrollySection>
+  </section>
+
+  <!-- SMRs Section -->
+  <section class="section border-b border-ink-200">
+    <div class="container-narrow">
+      <h2 class="text-display-sm mb-4">Small Modular Reactors</h2>
+      <div class="prose">
+        <p>
+          SMRs are designed for incremental capacity addition—a 300 MW module can be added as demand grows, lowering upfront commitment and enabling deployment in smaller grids or remote areas.
+        </p>
+
+        <p>
+          The key insight is <strong>economies of series</strong>: building 30-50+ identical units unlocks cost benefits through factory mass production. Large reactors provide economies of scale; SMRs provide economies of manufacturing.
+        </p>
+
+        <h3>Licensed SMR Designs</h3>
+
+        <ul>
+          <li><strong>NuScale VOYGR</strong> (77 MW/module) — First SMR certified by US NRC (2022). First plant planned ~2029.</li>
+          <li><strong>GE Hitachi BWRX-300</strong> (300 MW) — Under licensing in Canada/USA. Orders in Ontario and Poland.</li>
+          <li><strong>Rolls-Royce SMR</strong> (470 MW) — UK design assessment in progress. Target: early 2030s.</li>
+        </ul>
+
+        <p>
+          Construction times for SMRs are estimated at 3-4 years per module once supply chains mature, with overall first deployment taking 5-7 years including regulatory and FOAK setup.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gen IV Technologies -->
+  <section class="section border-b border-ink-200 bg-paper-100">
+    <div class="container-wide">
+      <h2 class="text-display-sm mb-4">Category 3: Advanced Reactors (5-10 Year Horizon)</h2>
+      <p class="text-ink-600 font-serif text-lg mb-10 max-w-2xl">
+        Generation IV designs promise dramatically better fuel economy, reduced waste, and higher temperature output for industrial applications.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white border border-ink-200 p-8">
+          <p class="label mb-3">Sodium-Cooled Fast Reactors</p>
+          <h3 class="text-xl font-bold mb-4">TerraPower Natrium</h3>
+          <p class="text-ink-600 mb-4">
+            345 MW sodium fast reactor with molten salt heat storage. US DOE-backed demonstration plant by 2030. Can breed fuel or burn actinides, improving fuel utilization.
+          </p>
+          <p class="text-sm text-ink-500">Also: China CFR-600 (grid connection 2025-26)</p>
+        </div>
+
+        <div class="bg-white border border-ink-200 p-8">
+          <p class="label mb-3">Molten Salt Reactors</p>
+          <h3 class="text-xl font-bold mb-4">TMSR-LF1 (China)</h3>
+          <p class="text-ink-600 mb-4">
+            2 MW experimental thorium-uranium fuel salt reactor. First criticality 2021—world's first MSR critical in decades. Low-pressure, inherent safety via freeze plug drain system.
+          </p>
+          <p class="text-sm text-ink-500">Also: Terrestrial Energy IMSR, Kairos Power FHR</p>
+        </div>
+
+        <div class="bg-white border border-ink-200 p-8">
+          <p class="label mb-3">High-Temperature Gas Reactors</p>
+          <h3 class="text-xl font-bold mb-4">X-energy Xe-100</h3>
+          <p class="text-ink-600 mb-4">
+            80 MW pebble-bed helium-cooled module. US ARDP demonstration by ~2027. TRISO fuel, meltdown-proof. Targets industrial process heat and cogeneration.
+          </p>
+          <p class="text-sm text-ink-500">Also: Project Pele (5 MW mobile microreactor)</p>
+        </div>
+
+        <div class="bg-white border border-ink-200 p-8">
+          <p class="label mb-3">Lead-Cooled Fast Reactors</p>
+          <h3 class="text-xl font-bold mb-4">BREST-OD-300 (Russia)</h3>
+          <p class="text-ink-600 mb-4">
+            300 MW lead-cooled fast reactor. Construction began 2021. Dense nitride fuel with on-site closed fuel cycle facility—aims to fully recycle its own fuel.
+          </p>
+          <p class="text-sm text-ink-500">Also: ALFRED (Europe, 125 MW proposed)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fuel Cycle -->
+  <section class="section border-b border-ink-200">
+    <div class="container-narrow">
+      <h2 class="text-display-sm mb-4">Fuel Cycle and Waste</h2>
+      <div class="prose">
+        <p>
+          Modern reactors achieve higher fuel burnup than previous generations: Gen III+ designs reach <strong>50-65 GWd/tonne</strong> vs ~35 GWd/t for Gen II. This means more energy per unit of uranium and less waste per MWh generated.
+        </p>
+
+        <h3>Waste Reality</h3>
+        <p>
+          A typical 1 GW LWR produces about <strong>20-30 tonnes of spent fuel per year</strong>. The composition after one cycle is roughly:
+        </p>
+        <ul>
+          <li>~95% unused U-238</li>
+          <li>~1% U-235</li>
+          <li>~1% plutonium</li>
+          <li>~3% fission products and minor actinides</li>
+        </ul>
+
+        <p>
+          In open fuel cycles (no reprocessing), all this is treated as waste. In closed cycles, uranium and plutonium can be separated and recycled, reducing the volume and long-term radiotoxicity of ultimate waste.
+        </p>
+
+        <h3>Geological Disposal</h3>
+        <p>
+          Finland has constructed the world's first operational geological repository (ONKALO), expected to accept spent fuel in the mid-2020s. Sweden and France are in advanced licensing stages. Deep underground repositories remain the international consensus for permanent disposal.
+        </p>
+
+        <h3>Advanced Waste Reduction</h3>
+        <p>
+          Fast-spectrum reactors can fission transuranic elements that LWRs leave behind, extracting <strong>90-95% of fuel energy</strong> and cutting long-term radiotoxicity to a few centuries instead of millennia. Some Gen IV designs could reduce required isolation time to ~300-500 years.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conclusion -->
+  <section class="section bg-ink-950 text-white">
+    <div class="container-narrow">
+      <h2 class="text-display-sm text-white mb-6">Conclusion</h2>
+      <div class="prose text-ink-300">
+        <p>
+          Today's production-ready reactors (Category 1) are the safest and most efficient fission plants ever operated. China is aggressively building Gen III plants while investing in all Gen IV categories. Europe has a more cautious trajectory—completing a few large Gen III projects while exploring SMRs.
+        </p>
+        <p class="text-white">
+          These efforts underscore that nuclear fission remains vital to the clean energy transition. Category 1 reactors provide proven large-scale power now, while Categories 2 and 3 ensure more innovative, economic, and sustainable options will be available in the near future.
+        </p>
+      </div>
+      <div class="mt-10 flex flex-col sm:flex-row gap-4">
+        <a href="/research/energy-strategy" class="btn bg-white text-ink-950 hover:bg-ink-100">
+          Read our energy strategy
+        </a>
+        <a href="/research/coal-gas" class="btn border border-ink-500 text-white hover:bg-ink-800">
+          Coal vs Gas analysis
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sources -->
+  <section class="section border-t border-ink-200">
+    <div class="container-narrow">
+      <p class="font-semibold mb-4">Sources</p>
+      <ul class="text-sm text-ink-600 space-y-2">
+        <li>World Nuclear Association — Reactor designs, economics, safety, fuel cycles</li>
+        <li>International Atomic Energy Agency (IAEA) — Safety reports, PRIS database</li>
+        <li>World Nuclear News, NucNet — Industry status updates</li>
+        <li>IEA World Energy Outlook 2023 — LCOE estimates</li>
+        <li>Vendor technical documentation</li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import scrollama from 'scrollama';
+
+  // Category data
+  const categories = {
+    1: {
+      name: 'Commercially Deployed',
+      reactors: [
+        { name: 'AP1000', capacity: '1,150 MW' },
+        { name: 'EPR', capacity: '1,600 MW' },
+        { name: 'Hualong One', capacity: '1,090 MW' },
+        { name: 'VVER-1200', capacity: '1,200 MW' },
+      ]
+    },
+    2: {
+      name: 'Licensed, Limited Deployment',
+      reactors: [
+        { name: 'NuScale VOYGR', capacity: '77 MW' },
+        { name: 'BWRX-300', capacity: '300 MW' },
+        { name: 'Rolls-Royce SMR', capacity: '470 MW' },
+        { name: 'CAREM-25', capacity: '27 MW' },
+      ]
+    },
+    3: {
+      name: 'Advanced Demonstrations',
+      reactors: [
+        { name: 'Natrium (SFR)', capacity: '345 MW' },
+        { name: 'Xe-100 (HTGR)', capacity: '80 MW' },
+        { name: 'BREST-OD-300 (LFR)', capacity: '300 MW' },
+        { name: 'TMSR-LF1 (MSR)', capacity: '2 MW' },
+      ]
+    }
+  };
+
+  function updateCategoryDisplay(cat: number) {
+    const data = categories[cat as keyof typeof categories];
+    const numEl = document.getElementById('category-number');
+    const nameEl = document.getElementById('category-name');
+    const itemsEl = document.getElementById('reactor-items');
+
+    if (numEl) numEl.textContent = String(cat);
+    if (nameEl) nameEl.textContent = data.name;
+    if (itemsEl) {
+      itemsEl.innerHTML = data.reactors.map(r =>
+        `<li class="flex justify-between"><span>${r.name}</span><span class="text-ink-500">${r.capacity}</span></li>`
+      ).join('');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Categories scrolly
+    const catScrolly = document.getElementById('categories-scrolly');
+    if (catScrolly) {
+      catScrolly.addEventListener('stepchange', ((e: CustomEvent) => {
+        const step = e.detail.element;
+        const cat = parseInt(step.dataset.category || '1');
+        updateCategoryDisplay(cat);
+      }) as EventListener);
+    }
+  });
+</script>

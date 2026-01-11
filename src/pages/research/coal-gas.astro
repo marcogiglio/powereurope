@@ -1,0 +1,518 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ScrollySection from '../../components/ScrollySection.astro';
+---
+
+<BaseLayout
+  title="Coal vs Natural Gas: EU Transitional Strategy | PowerEurope"
+  description="Analysis of coal and natural gas as transitional energy sources for Europe, comparing costs, scalability, security, and emissions."
+>
+  <!-- Hero -->
+  <header class="py-20 md:py-32 border-b border-ink-200">
+    <div class="container-narrow">
+      <p class="label mb-6">Research</p>
+      <h1 class="mb-8">Coal vs Natural Gas</h1>
+      <p class="text-xl md:text-2xl text-ink-600 leading-relaxed max-w-xl font-serif">
+        A pragmatic analysis of transitional energy sources for the EU (2025-2040), prioritizing cost reduction and supply security.
+      </p>
+      <div class="mt-8 flex items-center gap-4 text-sm text-ink-500">
+        <span>January 2026</span>
+        <span class="text-ink-300">·</span>
+        <span>25 min read</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Scenario -->
+  <section class="section border-b border-ink-200 bg-paper-100">
+    <div class="container-narrow">
+      <p class="label mb-4">Scenario Assumptions</p>
+      <div class="prose">
+        <p>
+          This analysis assumes the EU pursues a 10-15 year transitional strategy under <strong>deregulated conditions</strong>, prioritizing economic efficiency and supply security over emissions reduction. The goal is to dramatically cut energy costs (~80% from crisis levels) while improving geopolitical security.
+        </p>
+        <p>
+          Domestic energy sources are favored. Infrastructure expansion (LNG terminals, pipelines, coal ports, mining) is permitted. Renewables grow but are not the primary driver of cost reduction.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Comparison Table -->
+  <section class="section border-b border-ink-200">
+    <div class="container-wide">
+      <h2 class="text-display-sm mb-8">Key Metrics Comparison</h2>
+
+      <div class="overflow-x-auto -mx-5 px-5">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Coal</th>
+              <th>Natural Gas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-medium">LCOE (baseline)</td>
+              <td>~€90/MWh (supercritical, 2018)</td>
+              <td>~€95/MWh (CCGT, 2018)</td>
+            </tr>
+            <tr>
+              <td class="font-medium">CO₂ intensity</td>
+              <td>820-1,000 g/kWh</td>
+              <td>370-450 g/kWh</td>
+            </tr>
+            <tr>
+              <td class="font-medium">Import dependency</td>
+              <td>~67% (hard coal); lignite domestic</td>
+              <td>~86% (2024)</td>
+            </tr>
+            <tr>
+              <td class="font-medium">Domestic reserves</td>
+              <td>96% of EU fossil reserves</td>
+              <td>&lt;15% of demand; declining</td>
+            </tr>
+            <tr>
+              <td class="font-medium">New build time</td>
+              <td>4-7 years; existing plants: months</td>
+              <td>2-3 years CCGT; FSRUs: &lt;1 year</td>
+            </tr>
+            <tr>
+              <td class="font-medium">Political status</td>
+              <td>Phase-out planned (2030s)</td>
+              <td>"Transition fuel" in EU taxonomy</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cost Scrolly -->
+  <section class="border-b border-ink-200">
+    <ScrollySection id="cost-scrolly" graphicPosition="right">
+      <div slot="graphic">
+        <div class="w-full max-w-lg">
+          <p class="label mb-4 text-center">Electricity Cost Factors</p>
+          <div id="cost-chart" class="h-[350px]">
+            <p class="text-ink-400 text-sm">Loading chart...</p>
+          </div>
+        </div>
+      </div>
+
+      <div slot="steps" class="py-20 lg:py-40">
+        <div class="step px-5 lg:px-10 min-h-[80vh] lg:min-h-screen flex items-center" data-step="0" data-cost="baseline">
+          <div class="bg-white p-8 lg:p-10 border border-ink-200 max-w-md">
+            <h3 class="text-display-sm mb-4">Baseline Economics</h3>
+            <p class="text-ink-600 font-serif text-lg leading-relaxed mb-4">
+              Before the crisis, coal and gas had similar LCOEs (~€90-95/MWh). But <strong>fuel price volatility</strong> makes them diverge dramatically in practice.
+            </p>
+            <p class="text-sm text-ink-500">
+              During 2022, gas prices spiked so high that gas-fired electricity exceeded €150/MWh.
+            </p>
+          </div>
+        </div>
+
+        <div class="step px-5 lg:px-10 min-h-[80vh] lg:min-h-screen flex items-center" data-step="1" data-cost="carbon">
+          <div class="bg-white p-8 lg:p-10 border border-ink-200 max-w-md">
+            <h3 class="text-display-sm mb-4">Carbon Pricing Impact</h3>
+            <p class="text-ink-600 font-serif text-lg leading-relaxed mb-4">
+              The EU ETS imposes ~€60-100/tonne CO₂. Since coal emits <strong>2× the CO₂</strong> of gas per kWh, this adds ~€68/MWh to coal but only ~€27/MWh to gas.
+            </p>
+            <p class="text-sm text-ink-500">
+              Waiving carbon costs would significantly favor coal's LCOE.
+            </p>
+          </div>
+        </div>
+
+        <div class="step px-5 lg:px-10 min-h-[80vh] lg:min-h-screen flex items-center" data-step="2" data-cost="domestic">
+          <div class="bg-white p-8 lg:p-10 border border-ink-200 max-w-md">
+            <h3 class="text-display-sm mb-4">Domestic Advantage</h3>
+            <p class="text-ink-600 font-serif text-lg leading-relaxed mb-4">
+              Domestic lignite produces <strong>some of the lowest-cost electricity in Europe</strong>. Hard coal is much less expensive than imported gas as a fuel.
+            </p>
+            <p class="text-sm text-ink-500">
+              Lignite power costs can be €20-30/MWh excluding carbon fees.
+            </p>
+          </div>
+        </div>
+      </div>
+    </ScrollySection>
+  </section>
+
+  <!-- Supply Security Scrolly -->
+  <section class="border-b border-ink-200">
+    <ScrollySection id="security-scrolly" graphicPosition="left">
+      <div slot="graphic">
+        <div class="w-full max-w-md text-center">
+          <p class="label mb-6">Import Dependency</p>
+          <div class="flex justify-center gap-8" id="dependency-bars">
+            <div class="text-center">
+              <div class="w-20 bg-ink-200 mx-auto mb-2" style="height: 200px;">
+                <div class="bg-ink-950 w-full transition-all duration-500" id="coal-bar" style="height: 67%;"></div>
+              </div>
+              <p class="text-sm font-medium">Coal</p>
+              <p class="text-2xl font-bold mt-1" id="coal-pct">67%</p>
+            </div>
+            <div class="text-center">
+              <div class="w-20 bg-ink-200 mx-auto mb-2" style="height: 200px;">
+                <div class="bg-ink-600 w-full transition-all duration-500" id="gas-bar" style="height: 86%;"></div>
+              </div>
+              <p class="text-sm font-medium">Gas</p>
+              <p class="text-2xl font-bold mt-1" id="gas-pct">86%</p>
+            </div>
+          </div>
+          <p class="text-xs text-ink-400 mt-6">Hard coal import dependency; lignite is 100% domestic</p>
+        </div>
+      </div>
+
+      <div slot="steps" class="py-20 lg:py-40">
+        <div class="step px-5 lg:px-10 min-h-[80vh] lg:min-h-screen flex items-center" data-step="0" data-security="reserves">
+          <div class="bg-white p-8 lg:p-10 border border-ink-200 max-w-md lg:ml-auto">
+            <h3 class="text-display-sm mb-4">Domestic Reserves</h3>
+            <p class="text-ink-600 font-serif text-lg leading-relaxed mb-4">
+              Coal and lignite account for <strong>96% of EU's remaining fossil reserves</strong>. Lignite is abundant in Germany, Poland, and Czechia—decades of supply at current output.
+            </p>
+            <p class="text-sm text-ink-500">
+              EU gas production met only 14% of demand in 2024, and is declining.
+            </p>
+          </div>
+        </div>
+
+        <div class="step px-5 lg:px-10 min-h-[80vh] lg:min-h-screen flex items-center" data-step="1" data-security="diversity">
+          <div class="bg-white p-8 lg:p-10 border border-ink-200 max-w-md lg:ml-auto">
+            <h3 class="text-display-sm mb-4">Supplier Diversity</h3>
+            <p class="text-ink-600 font-serif text-lg leading-relaxed mb-4">
+              By 2023, EU coal imports were <strong>widely diversified</strong>: Australia 25%, USA 25%, Colombia 18%, South Africa 14%, Kazakhstan 9%.
+            </p>
+            <p class="text-sm text-ink-500">
+              Gas relies heavily on a few players: Norway, USA (LNG), Qatar, Algeria.
+            </p>
+          </div>
+        </div>
+
+        <div class="step px-5 lg:px-10 min-h-[80vh] lg:min-h-screen flex items-center" data-step="2" data-security="resilience">
+          <div class="bg-white p-8 lg:p-10 border border-ink-200 max-w-md lg:ml-auto">
+            <h3 class="text-display-sm mb-4">Crisis Resilience</h3>
+            <p class="text-ink-600 font-serif text-lg leading-relaxed mb-4">
+              The EU banned Russian coal in August 2022. By 2023, imports from Russia were down <strong>98%</strong> with minimal disruption.
+            </p>
+            <p class="text-sm text-ink-500">
+              Coal can be stockpiled at plants for weeks/months. Gas storage covers only ~25-30% of annual demand.
+            </p>
+          </div>
+        </div>
+      </div>
+    </ScrollySection>
+  </section>
+
+  <!-- Infrastructure Speed -->
+  <section class="section border-b border-ink-200 bg-ink-950 text-white">
+    <div class="container-wide">
+      <h2 class="text-display-sm text-white mb-10">Infrastructure Build Speed</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="border-t-2 border-white pt-6">
+          <h3 class="text-xl font-bold mb-4">Natural Gas: Fastest</h3>
+          <ul class="space-y-3 text-ink-300">
+            <li>Floating LNG terminals (FSRUs): <strong class="text-white">&lt;12 months</strong></li>
+            <li>Germany added 14 bcm/yr capacity by winter 2022-23</li>
+            <li>New CCGT power plant: <strong class="text-white">2-3 years</strong></li>
+            <li>Pipeline upgrades: 1-2 years (flow reversals done in months)</li>
+          </ul>
+        </div>
+        <div class="border-t-2 border-ink-500 pt-6">
+          <h3 class="text-xl font-bold mb-4">Coal: Use Existing Assets</h3>
+          <ul class="space-y-3 text-ink-300">
+            <li>Reactivate mothballed plants: <strong class="text-white">months</strong></li>
+            <li>Germany kept/reactivated 8-10 GW for 2022-23 winters</li>
+            <li>New coal plant: <strong class="text-white">4-7 years</strong> (too slow)</li>
+            <li>Mine expansion: 1-3 years for incremental output</li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-ink-400 mt-10 text-sm">
+        Gas wins on speed for new capacity. Coal's advantage is the vast existing infrastructure that can be utilized immediately.
+      </p>
+    </div>
+  </section>
+
+  <!-- Grid Compatibility -->
+  <section class="section border-b border-ink-200">
+    <div class="container-narrow">
+      <h2 class="text-display-sm mb-4">Grid Flexibility</h2>
+      <div class="prose">
+        <p>
+          A critical difference: <strong>gas plants are flexible; coal plants are not</strong>.
+        </p>
+
+        <p>
+          Gas CCGTs can start from cold in 1-2 hours. Open-cycle turbines start in minutes. This makes gas ideal for balancing variable renewables—ramping up during wind lulls, shutting off when solar surges.
+        </p>
+
+        <p>
+          Coal units take <strong>4-10+ hours</strong> to start from cold. They cannot easily operate below 30-50% load. Ramping frequently causes thermal stress and higher maintenance. Multiple sources note that coal plants are "relatively inflexible—you can't turn a coal plant off and on based on demand."
+        </p>
+
+        <blockquote>
+          Gas complements renewables. Coal competes with them.
+        </blockquote>
+
+        <p>
+          In a grid with growing wind and solar, a large coal fleet poses the risk of must-run baseload forcing renewable curtailment. Gas plants can economically run at lower capacity factors, turning off when renewables are abundant.
+        </p>
+
+        <h3>Future-Proofing</h3>
+        <p>
+          Many new CCGTs are being built <strong>hydrogen-ready</strong>. Gas pipelines can be repurposed for hydrogen with modifications. Money spent on gas now could retain value in a greener system.
+        </p>
+        <p>
+          Coal plants have limited future use. There is no easy way to transition a coal boiler to zero-carbon fuel. Carbon capture adds significant cost and is not widely deployed.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Political Resistance -->
+  <section class="section border-b border-ink-200 bg-paper-100">
+    <div class="container-wide">
+      <h2 class="text-display-sm mb-8">Political Feasibility</h2>
+      <div class="grid md:grid-cols-2 gap-10">
+        <div>
+          <p class="label mb-4 text-accent-500">High Resistance</p>
+          <h3 class="text-xl font-bold mb-4">Coal</h3>
+          <ul class="space-y-3 text-ink-600">
+            <li>Climate activism has centered on phasing out coal</li>
+            <li>Many EU states have binding phase-out laws (2025-2038)</li>
+            <li>59% of Germans opposed clearing Lützerath for mining (2023)</li>
+            <li>Local pollution sparks community opposition</li>
+            <li>Would fracture EU climate policy consensus</li>
+          </ul>
+        </div>
+        <div>
+          <p class="label mb-4">Moderate Resistance</p>
+          <h3 class="text-xl font-bold mb-4">Natural Gas</h3>
+          <ul class="space-y-3 text-ink-600">
+            <li>Viewed as "cleaner" transitional fuel</li>
+            <li>Included in EU taxonomy (with conditions)</li>
+            <li>Post-Ukraine, gas security has broad political support</li>
+            <li>New gas plants built quietly with little protest</li>
+            <li>Main opposition: fracking (banned in 12+ EU countries)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recommendation -->
+  <section class="section border-b border-ink-200">
+    <div class="container-narrow">
+      <h2 class="text-display-sm mb-6">Recommended Strategy</h2>
+      <div class="prose">
+        <p>
+          The optimal approach is a <strong>balanced mix</strong>: lean on coal for immediate cost reduction and domestic security, while expanding natural gas for flexibility and future readiness.
+        </p>
+
+        <h3>1. Maximize Domestic Coal (Baseload)</h3>
+        <ul>
+          <li>Halt or delay coal plant closures</li>
+          <li>Run existing lignite plants at high capacity</li>
+          <li>Suspend carbon pricing for coal during transition</li>
+          <li>Extend mine lifetimes where viable</li>
+        </ul>
+
+        <h3>2. Expand Gas Supply (Flexibility)</h3>
+        <ul>
+          <li>Complete all planned LNG terminals (~300+ bcm capacity by 2030)</li>
+          <li>Lock in long-term contracts with US, Qatar, Norway</li>
+          <li>Build new CCGTs for system flexibility</li>
+          <li>Strengthen internal EU gas interconnections</li>
+        </ul>
+
+        <h3>3. Maintain Renewables Momentum</h3>
+        <ul>
+          <li>Continue wind/solar expansion (cheapest when available)</li>
+          <li>Use renewables to reduce fuel consumption</li>
+          <li>Keep nuclear plans on track for post-2035 baseload</li>
+        </ul>
+
+        <h3>4. Plan the Exit</h3>
+        <ul>
+          <li>Set sunset date for coal (~2040)</li>
+          <li>Gas infrastructure can pivot to hydrogen</li>
+          <li>Communicate transition timeline to maintain credibility</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Target Mix -->
+  <section class="section bg-ink-950 text-white">
+    <div class="container-wide">
+      <h2 class="text-display-sm text-white mb-10">Target Mix: 2030</h2>
+      <div class="grid md:grid-cols-4 gap-8 md:gap-6">
+        <div class="border-t-2 border-white pt-4">
+          <p class="text-stat text-white">30-40%</p>
+          <p class="text-ink-300 mt-2">Natural Gas</p>
+        </div>
+        <div class="border-t-2 border-white pt-4">
+          <p class="text-stat text-white">20-25%</p>
+          <p class="text-ink-300 mt-2">Coal</p>
+        </div>
+        <div class="border-t-2 border-white pt-4">
+          <p class="text-stat text-white">35-50%</p>
+          <p class="text-ink-300 mt-2">Renewables + Nuclear</p>
+        </div>
+        <div class="border-t-2 border-white pt-4">
+          <p class="text-stat text-white">€50-60</p>
+          <p class="text-ink-300 mt-2">Target wholesale price (€/MWh)</p>
+        </div>
+      </div>
+      <p class="text-ink-400 mt-10 text-sm">
+        This mix achieves cost reduction (coal providing cheap baseload, renewables adding cheap energy, gas preventing supply gaps) while maintaining energy security and keeping the door open for future decarbonization.
+      </p>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="section border-t border-ink-200">
+    <div class="container-narrow text-center">
+      <h2 class="text-display-sm mb-4">Continue Reading</h2>
+      <p class="text-ink-600 mb-8">
+        Explore our full energy strategy and analysis of nuclear technologies.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="/research/energy-strategy" class="btn btn-primary">
+          Energy Strategy
+        </a>
+        <a href="/research/fission" class="btn btn-secondary">
+          Fission Technologies
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sources -->
+  <section class="py-12 border-t border-ink-200">
+    <div class="container-narrow">
+      <p class="font-semibold mb-4">Sources</p>
+      <ul class="text-sm text-ink-600 space-y-1">
+        <li>Eurostat — Energy Statistics 2023-2025</li>
+        <li>Euracoal — Coal in Europe: Reserves and Market 2025</li>
+        <li>IEA — Coal and Gas Market Reports 2023</li>
+        <li>Trinomics for EU Commission — Energy Cost Assessment 2020</li>
+        <li>MIT Climate Portal — Coal vs Gas Emissions 2023</li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+
+  // Cost comparison data
+  const costData = [
+    { factor: 'Fuel', coal: 25, gas: 45 },
+    { factor: 'Capital', coal: 35, gas: 20 },
+    { factor: 'O&M', coal: 15, gas: 15 },
+    { factor: 'Carbon (€68/t)', coal: 68, gas: 27 },
+  ];
+
+  function renderCostChart(showCarbon: boolean = true) {
+    const container = document.getElementById('cost-chart');
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    const data = showCarbon ? costData : costData.filter(d => d.factor !== 'Carbon (€68/t)');
+
+    const coalTotal = data.reduce((sum, d) => sum + d.coal, 0);
+    const gasTotal = data.reduce((sum, d) => sum + d.gas, 0);
+
+    // Create stacked data
+    const stackedData: Array<{fuel: string; factor: string; value: number; cumulative: number}> = [];
+    let coalCum = 0;
+    let gasCum = 0;
+
+    data.forEach(d => {
+      stackedData.push({ fuel: 'Coal', factor: d.factor, value: d.coal, cumulative: coalCum });
+      coalCum += d.coal;
+      stackedData.push({ fuel: 'Gas', factor: d.factor, value: d.gas, cumulative: gasCum });
+      gasCum += d.gas;
+    });
+
+    const chart = Plot.plot({
+      width: container.clientWidth,
+      height: 320,
+      marginLeft: 60,
+      marginRight: 20,
+      marginBottom: 40,
+      style: {
+        background: 'transparent',
+        fontSize: '12px',
+        fontFamily: 'Inter, system-ui, sans-serif',
+      },
+      x: {
+        label: null,
+        domain: ['Coal', 'Gas'],
+      },
+      y: {
+        label: null,
+        domain: [0, 160],
+        tickFormat: d => `€${d}`,
+        grid: true,
+      },
+      color: {
+        domain: ['Fuel', 'Capital', 'O&M', 'Carbon (€68/t)'],
+        range: ['#1a1a1a', '#666666', '#a4a4a4', '#b45309'],
+      },
+      marks: [
+        Plot.barY(stackedData, {
+          x: 'fuel',
+          y: 'value',
+          fill: 'factor',
+          offset: 'stack',
+        }),
+        Plot.text([
+          { fuel: 'Coal', total: coalTotal },
+          { fuel: 'Gas', total: gasTotal },
+        ], {
+          x: 'fuel',
+          y: 'total',
+          text: d => `€${d.total}/MWh`,
+          dy: -10,
+          fontWeight: 'bold',
+        }),
+      ],
+    });
+
+    container.appendChild(chart);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    renderCostChart(true);
+
+    // Cost scrolly listener
+    const costScrolly = document.getElementById('cost-scrolly');
+    if (costScrolly) {
+      costScrolly.addEventListener('stepchange', ((e: CustomEvent) => {
+        const step = e.detail.element;
+        const costType = step.dataset.cost;
+        if (costType === 'baseline') {
+          renderCostChart(false);
+        } else {
+          renderCostChart(true);
+        }
+      }) as EventListener);
+    }
+  });
+
+  // Handle resize
+  let resizeTimeout: ReturnType<typeof setTimeout>;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      renderCostChart(true);
+    }, 250);
+  });
+</script>
