@@ -1,0 +1,97 @@
+---
+interface Props {
+  variant?: 'default' | 'compact' | 'hero';
+  heading?: string;
+  subheading?: string;
+}
+
+const {
+  variant = 'default',
+  heading = 'Stay Informed',
+  subheading = 'Get updates on European energy policy and our campaign progress.',
+} = Astro.props;
+
+const isHero = variant === 'hero';
+const isCompact = variant === 'compact';
+---
+
+<div class:list={[
+  'email-signup',
+  isHero && 'text-center',
+  !isCompact && 'py-8',
+]}>
+  {!isCompact && (
+    <div class="mb-6">
+      <h3 class:list={['font-bold', isHero ? 'text-2xl md:text-3xl' : 'text-xl']}>
+        {heading}
+      </h3>
+      <p class="text-gray-600 mt-2">{subheading}</p>
+    </div>
+  )}
+
+  <form
+    action="/api/subscribe"
+    method="POST"
+    class:list={[
+      'flex gap-3',
+      isHero ? 'flex-col sm:flex-row justify-center max-w-md mx-auto' : 'flex-col sm:flex-row',
+    ]}
+  >
+    <div class="flex-1">
+      <label for="email" class="sr-only">Email address</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        placeholder="your@email.com"
+        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-shadow"
+      />
+    </div>
+
+    <div class:list={[!isCompact && 'sm:flex-shrink-0']}>
+      <select
+        name="country"
+        class="w-full sm:w-auto px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none bg-white"
+      >
+        <option value="">Country</option>
+        <option value="AT">Austria</option>
+        <option value="BE">Belgium</option>
+        <option value="BG">Bulgaria</option>
+        <option value="HR">Croatia</option>
+        <option value="CY">Cyprus</option>
+        <option value="CZ">Czech Republic</option>
+        <option value="DK">Denmark</option>
+        <option value="EE">Estonia</option>
+        <option value="FI">Finland</option>
+        <option value="FR">France</option>
+        <option value="DE">Germany</option>
+        <option value="GR">Greece</option>
+        <option value="HU">Hungary</option>
+        <option value="IE">Ireland</option>
+        <option value="IT">Italy</option>
+        <option value="LV">Latvia</option>
+        <option value="LT">Lithuania</option>
+        <option value="LU">Luxembourg</option>
+        <option value="MT">Malta</option>
+        <option value="NL">Netherlands</option>
+        <option value="PL">Poland</option>
+        <option value="PT">Portugal</option>
+        <option value="RO">Romania</option>
+        <option value="SK">Slovakia</option>
+        <option value="SI">Slovenia</option>
+        <option value="ES">Spain</option>
+        <option value="SE">Sweden</option>
+        <option value="OTHER">Other</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary whitespace-nowrap">
+      Join the Movement
+    </button>
+  </form>
+
+  <p class="text-xs text-gray-500 mt-3">
+    No spam. Unsubscribe anytime. We respect your privacy.
+  </p>
+</div>

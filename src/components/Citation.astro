@@ -1,0 +1,25 @@
+---
+interface Props {
+  source: string;
+  url?: string;
+  date?: string;
+}
+
+const { source, url, date } = Astro.props;
+---
+
+<cite class="not-italic">
+  {url ? (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener"
+      class="text-primary-700 hover:underline"
+    >
+      {source}
+    </a>
+  ) : (
+    <span>{source}</span>
+  )}
+  {date && <span class="text-gray-500"> ({date})</span>}
+</cite>

@@ -1,0 +1,61 @@
+{
+  "metadata": {
+    "title": "Industrial Electricity Prices",
+    "description": "Average industrial electricity prices by region, in EUR/MWh (PPP adjusted where applicable)",
+    "lastUpdated": "2024-12-01",
+    "sources": [
+      {
+        "name": "Eurostat",
+        "url": "https://ec.europa.eu/eurostat/web/energy/database"
+      },
+      {
+        "name": "U.S. Energy Information Administration",
+        "url": "https://www.eia.gov/electricity/data.php"
+      },
+      {
+        "name": "IEA World Energy Prices",
+        "url": "https://www.iea.org/data-and-statistics"
+      }
+    ]
+  },
+  "timeSeries": [
+    { "year": 2008, "europe": 92, "usa": 58, "china": 55 },
+    { "year": 2009, "europe": 95, "usa": 52, "china": 52 },
+    { "year": 2010, "europe": 95, "usa": 55, "china": 60 },
+    { "year": 2011, "europe": 100, "usa": 53, "china": 62 },
+    { "year": 2012, "europe": 105, "usa": 50, "china": 62 },
+    { "year": 2013, "europe": 110, "usa": 51, "china": 64 },
+    { "year": 2014, "europe": 112, "usa": 52, "china": 65 },
+    { "year": 2015, "europe": 105, "usa": 50, "china": 60 },
+    { "year": 2016, "europe": 98, "usa": 48, "china": 58 },
+    { "year": 2017, "europe": 102, "usa": 49, "china": 59 },
+    { "year": 2018, "europe": 110, "usa": 50, "china": 60 },
+    { "year": 2019, "europe": 108, "usa": 48, "china": 58 },
+    { "year": 2020, "europe": 95, "usa": 45, "china": 55 },
+    { "year": 2021, "europe": 125, "usa": 52, "china": 62 },
+    { "year": 2022, "europe": 180, "usa": 65, "china": 70 },
+    { "year": 2023, "europe": 155, "usa": 60, "china": 65 },
+    { "year": 2024, "europe": 145, "usa": 58, "china": 62 }
+  ],
+  "countryBreakdown2024": [
+    { "country": "Germany", "price": 165, "code": "DE" },
+    { "country": "France", "price": 125, "code": "FR" },
+    { "country": "Italy", "price": 170, "code": "IT" },
+    { "country": "Spain", "price": 140, "code": "ES" },
+    { "country": "Netherlands", "price": 155, "code": "NL" },
+    { "country": "Poland", "price": 120, "code": "PL" },
+    { "country": "Sweden", "price": 85, "code": "SE" },
+    { "country": "Belgium", "price": 160, "code": "BE" },
+    { "country": "Austria", "price": 150, "code": "AT" },
+    { "country": "Czech Republic", "price": 135, "code": "CZ" }
+  ],
+  "projections": {
+    "description": "IEA Stated Policies Scenario projections",
+    "data": [
+      { "year": 2025, "europe": 140, "usa": 55, "china": 58 },
+      { "year": 2030, "europe": 135, "usa": 50, "china": 52 },
+      { "year": 2035, "europe": 130, "usa": 48, "china": 48 },
+      { "year": 2040, "europe": 125, "usa": 45, "china": 45 }
+    ]
+  }
+}

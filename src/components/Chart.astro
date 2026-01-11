@@ -1,0 +1,35 @@
+---
+interface Props {
+  id: string;
+  title?: string;
+  caption?: string;
+  height?: string;
+  class?: string;
+}
+
+const { id, title, caption, height = '400px', class: className = '' } = Astro.props;
+---
+
+<figure class={`chart-container ${className}`}>
+  {title && (
+    <figcaption class="mb-4">
+      <h3 class="text-lg font-semibold text-gray-900">{title}</h3>
+    </figcaption>
+  )}
+
+  <div
+    id={id}
+    class="chart-area bg-white rounded-lg"
+    style={`min-height: ${height}`}
+    data-chart-container
+  >
+    <!-- Chart will be rendered here by client-side JS -->
+    <div class="flex items-center justify-center h-full text-gray-400">
+      <span>Loading chart...</span>
+    </div>
+  </div>
+
+  {caption && (
+    <p class="mt-3 text-sm text-gray-500">{caption}</p>
+  )}
+</figure>

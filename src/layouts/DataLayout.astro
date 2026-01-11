@@ -1,0 +1,70 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  lastUpdated: Date | string;
+  sources?: { name: string; url: string }[];
+}
+
+const { title, description, lastUpdated: rawDate, sources = [] } = Astro.props;
+
+// Handle both Date objects and date strings
+const lastUpdated = rawDate instanceof Date ? rawDate : new Date(rawDate);
+
+const formattedDate = lastUpdated.toLocaleDateString('en-GB', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={`${title} | Data | PowerEurope`} description={description}>
+  <div class="section">
+    <div class="container-wide">
+      <!-- Header -->
+      <header class="mb-12">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-xs font-semibold px-2 py-1 rounded text-emerald-600 bg-emerald-50">
+            Data Dashboard
+          </span>
+          <span class="text-sm text-gray-500">
+            Last updated: {formattedDate}
+          </span>
+        </div>
+
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          {title}
+        </h1>
+
+        <p class="text-xl text-gray-600 max-w-3xl">
+          {description}
+        </p>
+      </header>
+
+      <!-- Main content slot -->
+      <slot />
+
+      <!-- Sources & methodology -->
+      {sources.length > 0 && (
+        <footer class="mt-16 pt-8 border-t border-gray-200">
+          <h3 class="text-lg font-semibold mb-4">Data Sources</h3>
+          <ul class="space-y-2 text-sm text-gray-600">
+            {sources.map((source) => (
+              <li>
+                <a href={source.url} class="text-primary-700 hover:underline" target="_blank" rel="noopener">
+                  {source.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <p class="mt-6 text-sm text-gray-500">
+            All data is available under <a href="https://creativecommons.org/licenses/by/4.0/" class="underline">CC BY 4.0</a>.
+            <a href="/data/methodology" class="text-primary-700 hover:underline ml-2">View methodology</a>
+          </p>
+        </footer>
+      )}
+    </div>
+  </div>
+</BaseLayout>

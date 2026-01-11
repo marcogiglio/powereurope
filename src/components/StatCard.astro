@@ -1,0 +1,45 @@
+---
+interface Props {
+  value: string;
+  label: string;
+  change?: string;
+  changeDirection?: 'up' | 'down' | 'neutral';
+  source?: string;
+}
+
+const { value, label, change, changeDirection = 'neutral', source } = Astro.props;
+
+const changeColor = {
+  up: 'text-red-600',
+  down: 'text-green-600',
+  neutral: 'text-gray-500',
+}[changeDirection];
+
+const changeIcon = {
+  up: '↑',
+  down: '↓',
+  neutral: '→',
+}[changeDirection];
+---
+
+<div class="data-card">
+  <div class="text-3xl md:text-4xl font-bold text-gray-900 mb-1">
+    {value}
+  </div>
+
+  <div class="text-sm text-gray-600 mb-2">
+    {label}
+  </div>
+
+  {change && (
+    <div class={`text-sm font-medium ${changeColor}`}>
+      <span>{changeIcon}</span> {change}
+    </div>
+  )}
+
+  {source && (
+    <div class="text-xs text-gray-400 mt-3 pt-3 border-t border-gray-100">
+      Source: {source}
+    </div>
+  )}
+</div>

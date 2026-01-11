@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const articles = [
+  {
+    slug: 'smr-explained',
+    title: 'Small Modular Reactors Explained',
+    description: 'What SMRs are, how they work, and why they matter for European energy independence.',
+    date: new Date('2026-01-08'),
+    readTime: '12 min read',
+    tags: ['nuclear', 'SMR', 'technology'],
+  },
+];
+---
+
+<BaseLayout title="Research | PowerEurope" description="In-depth explainers on energy technology, policy, and economics.">
+  <section class="section">
+    <div class="container-narrow">
+      <header class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Research</h1>
+        <p class="text-xl text-gray-600">
+          In-depth explainers on energy technology, policy, and economics. We aim to make complex topics accessible without sacrificing accuracy.
+        </p>
+      </header>
+
+      <div class="space-y-8">
+        {articles.map((article) => (
+          <article class="border-b border-gray-200 pb-8">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-xs font-semibold px-2 py-1 rounded text-primary-600 bg-primary-50">
+                Research
+              </span>
+              <time datetime={article.date.toISOString()} class="text-sm text-gray-500">
+                {article.date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </time>
+              <span class="text-sm text-gray-400">{article.readTime}</span>
+            </div>
+            <h2 class="text-2xl font-bold mb-3">
+              <a href={`/research/${article.slug}`} class="hover:text-primary-700 transition-colors">
+                {article.title}
+              </a>
+            </h2>
+            <p class="text-gray-600 mb-4">{article.description}</p>
+            <div class="flex gap-2">
+              {article.tags.map((tag) => (
+                <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">{tag}</span>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
