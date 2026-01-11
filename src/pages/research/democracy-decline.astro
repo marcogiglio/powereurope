@@ -1,0 +1,514 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ScrollySection from '../../components/ScrollySection.astro';
+---
+
+<BaseLayout
+  title="The Retreat of Liberal Democracy | PowerEurope"
+  description="How authoritarian regimes have gained economic and political ground over three decades while democracies faltered."
+>
+  <!-- Hero -->
+  <header class="py-20 md:py-32 border-b border-ink-200">
+    <div class="container-narrow">
+      <p class="label mb-6">Research</p>
+      <h1 class="mb-8">The Retreat of Liberal Democracy</h1>
+      <p class="text-xl md:text-2xl text-ink-600 leading-relaxed max-w-xl font-serif">
+        How authoritarian regimes have gained economic and political ground over three decades while democracies faltered—and what energy has to do with it.
+      </p>
+      <div class="mt-8 flex items-center gap-4 text-sm text-ink-500">
+        <span>January 2026</span>
+        <span class="text-ink-300">·</span>
+        <span>20 min read</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Intro prose -->
+  <section class="section border-b border-ink-200">
+    <div class="container-narrow">
+      <div class="prose prose-dropcap">
+        <p>
+          The world is becoming less free. This is not speculation—it is the measured conclusion of every major democracy index. For eighteen consecutive years, more countries have moved toward authoritarianism than toward democracy.
+        </p>
+        <p>
+          For Europe, this shift has profound implications. Our values, our security, and our prosperity depend on the survival of the liberal democratic order we helped create. Yet that order is now in retreat.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scrollytelling: GDP Shift -->
+  <section class="border-b border-ink-200">
+    <ScrollySection id="gdp-scrolly" graphicPosition="right">
+      <div slot="graphic">
+        <div class="w-full max-w-lg">
+          <p class="label mb-4 text-center">Share of World GDP (PPP)</p>
+          <div id="gdp-chart" class="h-[350px] md:h-[400px]">
+            <p class="text-ink-400 text-sm">Loading chart...</p>
+          </div>
+          <p class="text-xs text-ink-400 mt-4 text-center">Source: IMF, Freedom House classifications</p>
+        </div>
+      </div>
+
+      <div slot="steps" class="py-20 lg:py-40">
+        <div class="step px-5 lg:px-10 min-h-[80vh] lg:min-h-screen flex items-center" data-step="0" data-year="1990">
+          <div class="bg-white p-8 lg:p-10 border border-ink-200 max-w-md">
+            <p class="text-stat text-ink-950 mb-3">1990</p>
+            <h3 class="text-display-sm mb-4">The Democratic Moment</h3>
+            <p class="text-ink-600 font-serif text-lg leading-relaxed">
+              The Berlin Wall has fallen. The Soviet Union is collapsing. Democracies control <strong class="text-ink-950">78%</strong> of global economic output.
+            </p>
+          </div>
+        </div>
+
+        <div class="step px-5 lg:px-10 min-h-[80vh] lg:min-h-screen flex items-center" data-step="1" data-year="2000">
+          <div class="bg-white p-8 lg:p-10 border border-ink-200 max-w-md">
+            <p class="text-stat text-ink-950 mb-3">2000</p>
+            <h3 class="text-display-sm mb-4">Peak Optimism</h3>
+            <p class="text-ink-600 font-serif text-lg leading-relaxed">
+              China joins the WTO. Russia seems to be democratizing. The "End of History" thesis appears vindicated. Democratic share: <strong class="text-ink-950">73%</strong>.
+            </p>
+          </div>
+        </div>
+
+        <div class="step px-5 lg:px-10 min-h-[80vh] lg:min-h-screen flex items-center" data-step="2" data-year="2010">
+          <div class="bg-white p-8 lg:p-10 border border-ink-200 max-w-md">
+            <p class="text-stat text-ink-950 mb-3">2010</p>
+            <h3 class="text-display-sm mb-4">The Turning Point</h3>
+            <p class="text-ink-600 font-serif text-lg leading-relaxed">
+              China has grown without democratizing. Russia under Putin is increasingly authoritarian. The Arab Spring will soon fail. Democratic share falls to <strong class="text-ink-950">64%</strong>.
+            </p>
+          </div>
+        </div>
+
+        <div class="step px-5 lg:px-10 min-h-[80vh] lg:min-h-screen flex items-center" data-step="3" data-year="2020">
+          <div class="bg-white p-8 lg:p-10 border border-ink-200 max-w-md">
+            <p class="text-stat text-ink-950 mb-3">2020</p>
+            <h3 class="text-display-sm mb-4">Democratic Recession</h3>
+            <p class="text-ink-600 font-serif text-lg leading-relaxed">
+              A decade of backsliding. Hungary and Poland challenge EU values. Erdoğan consolidates power. Democratic share: <strong class="text-ink-950">57%</strong>.
+            </p>
+          </div>
+        </div>
+
+        <div class="step px-5 lg:px-10 min-h-[80vh] lg:min-h-screen flex items-center" data-step="4" data-year="2024">
+          <div class="bg-white p-8 lg:p-10 border border-ink-200 max-w-md">
+            <p class="text-stat text-ink-950 mb-3">2024</p>
+            <h3 class="text-display-sm mb-4">The New Reality</h3>
+            <p class="text-ink-600 font-serif text-lg leading-relaxed">
+              Authoritarian regimes now control <strong class="text-ink-950">46%</strong> of world GDP. At current trends, they will have the majority by 2030.
+            </p>
+          </div>
+        </div>
+      </div>
+    </ScrollySection>
+  </section>
+
+  <!-- Key stats -->
+  <section class="section border-b border-ink-200 bg-ink-950 text-white">
+    <div class="container-wide">
+      <div class="grid md:grid-cols-4 gap-8 md:gap-6">
+        <div class="border-t-2 border-white pt-4">
+          <p class="text-stat text-white">71%</p>
+          <p class="text-ink-300 mt-2">of world population under authoritarian rule</p>
+        </div>
+        <div class="border-t-2 border-white pt-4">
+          <p class="text-stat text-white">18</p>
+          <p class="text-ink-300 mt-2">consecutive years of democratic decline</p>
+        </div>
+        <div class="border-t-2 border-white pt-4">
+          <p class="text-stat text-white">42</p>
+          <p class="text-ink-300 mt-2">countries actively autocratizing</p>
+        </div>
+        <div class="border-t-2 border-white pt-4">
+          <p class="text-stat text-white">13%</p>
+          <p class="text-ink-300 mt-2">of world lives in full democracy</p>
+        </div>
+      </div>
+      <p class="text-xs text-ink-500 mt-10">Sources: Freedom House, V-Dem Institute, Economist Intelligence Unit (2024)</p>
+    </div>
+  </section>
+
+  <!-- Indices table -->
+  <section class="section border-b border-ink-200">
+    <div class="container-narrow">
+      <h2 class="text-display-sm mb-4">The Evidence</h2>
+      <p class="text-ink-600 font-serif text-lg mb-10 max-w-xl">
+        Every major democracy index tells the same story: liberal democracy peaked around 2010 and has been declining since.
+      </p>
+
+      <div class="overflow-x-auto -mx-5 px-5">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Index</th>
+              <th>Peak Year</th>
+              <th>Trend</th>
+              <th>Countries Declining</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-medium">Freedom House</td>
+              <td>2005</td>
+              <td>18 consecutive years of decline</td>
+              <td>60+</td>
+            </tr>
+            <tr>
+              <td class="font-medium">V-Dem Liberal Democracy</td>
+              <td>2012</td>
+              <td>Lowest level since 1986</td>
+              <td>42 autocratizing</td>
+            </tr>
+            <tr>
+              <td class="font-medium">Economist Democracy Index</td>
+              <td>2015</td>
+              <td>Steady decline</td>
+              <td>74 regressed</td>
+            </tr>
+            <tr>
+              <td class="font-medium">Bertelsmann BTI</td>
+              <td>2010</td>
+              <td>Sharpest decline on record</td>
+              <td>137 countries</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Europe's Decline -->
+  <section class="border-b border-ink-200">
+    <ScrollySection id="europe-scrolly" graphicPosition="left">
+      <div slot="graphic">
+        <div class="w-full max-w-lg">
+          <p class="label mb-4 text-center">EU Share of World GDP</p>
+          <div id="europe-chart" class="h-[350px] md:h-[400px]">
+            <p class="text-ink-400 text-sm">Loading chart...</p>
+          </div>
+          <p class="text-xs text-ink-400 mt-4 text-center">Source: IMF World Economic Outlook</p>
+        </div>
+      </div>
+
+      <div slot="steps" class="py-20 lg:py-40">
+        <div class="step px-5 lg:px-10 min-h-[80vh] lg:min-h-screen flex items-center" data-step="0" data-eu-year="1990">
+          <div class="bg-white p-8 lg:p-10 border border-ink-200 max-w-md lg:ml-auto">
+            <p class="text-stat text-ink-950 mb-3">26%</p>
+            <h3 class="text-display-sm mb-4">1990: A Quarter of World Output</h3>
+            <p class="text-ink-600 font-serif text-lg leading-relaxed">
+              The European Union represented over a quarter of the global economy. Brussels could shape global standards. European industry led the world.
+            </p>
+          </div>
+        </div>
+
+        <div class="step px-5 lg:px-10 min-h-[80vh] lg:min-h-screen flex items-center" data-step="1" data-eu-year="2010">
+          <div class="bg-white p-8 lg:p-10 border border-ink-200 max-w-md lg:ml-auto">
+            <p class="text-stat text-ink-950 mb-3">19%</p>
+            <h3 class="text-display-sm mb-4">2010: Relative Decline Begins</h3>
+            <p class="text-ink-600 font-serif text-lg leading-relaxed">
+              The eurozone crisis exposed structural weaknesses. China's rise accelerated. Europe's share dropped to under a fifth of world GDP.
+            </p>
+          </div>
+        </div>
+
+        <div class="step px-5 lg:px-10 min-h-[80vh] lg:min-h-screen flex items-center" data-step="2" data-eu-year="2024">
+          <div class="bg-white p-8 lg:p-10 border border-ink-200 max-w-md lg:ml-auto">
+            <p class="text-stat text-ink-950 mb-3">14%</p>
+            <h3 class="text-display-sm mb-4">2024: The Shrinking Continent</h3>
+            <p class="text-ink-600 font-serif text-lg leading-relaxed">
+              Energy crisis, deindustrialization, demographic decline. The EU now represents just 14% of world GDP—and falling.
+            </p>
+          </div>
+        </div>
+
+        <div class="step px-5 lg:px-10 min-h-[80vh] lg:min-h-screen flex items-center" data-step="3" data-eu-year="2030">
+          <div class="bg-white p-8 lg:p-10 border border-ink-200 max-w-md lg:ml-auto">
+            <p class="text-stat text-ink-950 mb-3">12%</p>
+            <h3 class="text-display-sm mb-4">2030: Projected Irrelevance</h3>
+            <p class="text-ink-600 font-serif text-lg leading-relaxed">
+              IMF projections show the EU falling to 12% of world GDP. A Europe at 12% cannot set global standards. It cannot defend democratic values. It can only adapt to rules set by others.
+            </p>
+          </div>
+        </div>
+      </div>
+    </ScrollySection>
+  </section>
+
+  <!-- The Energy Connection -->
+  <section class="section border-b border-ink-200">
+    <div class="container-narrow">
+      <h2 class="text-display-sm mb-4">The Energy Connection</h2>
+      <div class="prose">
+        <p>
+          This brings us to PowerEurope's core thesis: <strong>energy is the foundation of power</strong>.
+        </p>
+        <p>
+          Countries that have maintained or increased their global economic weight share one characteristic: cheap, abundant energy. The United States had its shale revolution. China built the world's largest nuclear program alongside massive coal capacity. The Gulf states sit on oil.
+        </p>
+        <p>
+          Europe chose a different path. Carbon taxes, renewable subsidies, nuclear phase-outs, and regulatory barriers have made European energy the most expensive in the developed world. The result is visible: deindustrialization, capital flight, and declining influence.
+        </p>
+
+        <blockquote>
+          High energy costs → deindustrialization → economic decline → reduced influence → inability to defend democratic values
+        </blockquote>
+
+        <p>
+          This is not theoretical. It is happening now. BASF moves production to China. Volkswagen considers closing German plants. AI infrastructure is built in America, not Europe. The defense industrial base atrophies.
+        </p>
+        <p>
+          A weak, deindustrialized Europe cannot defend democratic values at home or abroad. An energy-dependent Europe cannot resist authoritarian coercion. A Europe that represents a shrinking share of world GDP cannot shape global rules.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to action -->
+  <section class="section bg-ink-950 text-white">
+    <div class="container-narrow">
+      <h2 class="text-display-sm text-white mb-4">The Path Forward</h2>
+      <p class="text-ink-300 font-serif text-lg mb-8 max-w-xl">
+        The choice is between managed decline and strategic renewal. Renewal requires energy sovereignty, industrial revival, and political will.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="/research/energy-strategy" class="btn bg-white text-ink-950 hover:bg-ink-100">
+          Read our energy strategy
+        </a>
+        <a href="/join" class="btn border border-ink-500 text-white hover:bg-ink-800">
+          Join the movement
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sources -->
+  <section class="section border-t border-ink-200">
+    <div class="container-narrow">
+      <p class="font-semibold mb-4">Data Sources</p>
+      <ul class="text-sm text-ink-600 space-y-2">
+        <li><a href="https://freedomhouse.org/report/freedom-world" class="underline">Freedom House: Freedom in the World</a></li>
+        <li><a href="https://v-dem.net/publications/democracy-reports/" class="underline">V-Dem Institute: Democracy Report 2024</a></li>
+        <li><a href="https://www.eiu.com/n/campaigns/democracy-index-2023/" class="underline">Economist Intelligence Unit: Democracy Index</a></li>
+        <li><a href="https://www.imf.org/en/Publications/WEO" class="underline">IMF: World Economic Outlook</a></li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import * as Plot from '@observablehq/plot';
+
+  // GDP Share data
+  const gdpData = [
+    { year: 1990, type: 'Democracies', share: 78 },
+    { year: 1990, type: 'Autocracies', share: 22 },
+    { year: 2000, type: 'Democracies', share: 73 },
+    { year: 2000, type: 'Autocracies', share: 27 },
+    { year: 2010, type: 'Democracies', share: 64 },
+    { year: 2010, type: 'Autocracies', share: 36 },
+    { year: 2020, type: 'Democracies', share: 57 },
+    { year: 2020, type: 'Autocracies', share: 43 },
+    { year: 2024, type: 'Democracies', share: 54 },
+    { year: 2024, type: 'Autocracies', share: 46 },
+  ];
+
+  // EU GDP data
+  const euData = [
+    { year: 1990, share: 26 },
+    { year: 1995, share: 24 },
+    { year: 2000, share: 23 },
+    { year: 2005, share: 21 },
+    { year: 2010, share: 19 },
+    { year: 2015, share: 16 },
+    { year: 2020, share: 15 },
+    { year: 2024, share: 14 },
+    { year: 2030, share: 12 },
+  ];
+
+  // Current step state
+  let currentGdpYear = 1990;
+  let currentEuYear = 1990;
+
+  function renderGdpChart(highlightYear: number = 2024) {
+    const container = document.getElementById('gdp-chart');
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    // Filter data up to highlight year
+    const visibleData = gdpData.filter(d => d.year <= highlightYear);
+
+    const chart = Plot.plot({
+      width: container.clientWidth,
+      height: 350,
+      marginLeft: 50,
+      marginRight: 20,
+      marginBottom: 40,
+      marginTop: 20,
+      style: {
+        background: 'transparent',
+        fontSize: '12px',
+        fontFamily: 'Inter, system-ui, sans-serif',
+      },
+      x: {
+        label: null,
+        tickFormat: 'd',
+        domain: [1990, 2024],
+      },
+      y: {
+        label: null,
+        domain: [0, 100],
+        tickFormat: d => `${d}%`,
+        grid: true,
+      },
+      color: {
+        domain: ['Democracies', 'Autocracies'],
+        range: ['#1a1a1a', '#a4a4a4'],
+      },
+      marks: [
+        Plot.areaY(visibleData, {
+          x: 'year',
+          y: 'share',
+          fill: 'type',
+          order: 'type',
+          curve: 'monotone-x',
+        }),
+        Plot.ruleY([50], { stroke: '#666', strokeDasharray: '4,4', strokeWidth: 1 }),
+        Plot.text([{ x: 2024, y: 50 }], {
+          x: 'x',
+          y: 'y',
+          text: () => '50%',
+          dx: -30,
+          dy: -10,
+          fontSize: 10,
+          fill: '#666',
+        }),
+      ],
+    });
+
+    container.appendChild(chart);
+  }
+
+  function renderEuChart(highlightYear: number = 2030) {
+    const container = document.getElementById('europe-chart');
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    const visibleData = euData.filter(d => d.year <= highlightYear);
+    const projectedData = euData.filter(d => d.year > 2024 && d.year <= highlightYear);
+
+    const chart = Plot.plot({
+      width: container.clientWidth,
+      height: 350,
+      marginLeft: 50,
+      marginRight: 20,
+      marginBottom: 40,
+      marginTop: 20,
+      style: {
+        background: 'transparent',
+        fontSize: '12px',
+        fontFamily: 'Inter, system-ui, sans-serif',
+      },
+      x: {
+        label: null,
+        tickFormat: 'd',
+        domain: [1990, 2030],
+      },
+      y: {
+        label: null,
+        domain: [0, 30],
+        tickFormat: d => `${d}%`,
+        grid: true,
+      },
+      marks: [
+        Plot.areaY(visibleData.filter(d => d.year <= 2024), {
+          x: 'year',
+          y: 'share',
+          fill: '#1a1a1a',
+          fillOpacity: 0.15,
+          curve: 'monotone-x',
+        }),
+        Plot.line(visibleData.filter(d => d.year <= 2024), {
+          x: 'year',
+          y: 'share',
+          stroke: '#1a1a1a',
+          strokeWidth: 2.5,
+          curve: 'monotone-x',
+        }),
+        // Projected line (dashed)
+        ...(projectedData.length > 0 ? [
+          Plot.line([...visibleData.filter(d => d.year >= 2024)], {
+            x: 'year',
+            y: 'share',
+            stroke: '#1a1a1a',
+            strokeWidth: 2,
+            strokeDasharray: '6,4',
+            curve: 'monotone-x',
+          }),
+        ] : []),
+        // Current point
+        Plot.dot(visibleData.filter(d => d.year === highlightYear || (highlightYear > 2024 && d.year === 2024)), {
+          x: 'year',
+          y: 'share',
+          fill: '#1a1a1a',
+          r: 6,
+        }),
+        // Labels
+        Plot.text(visibleData.filter(d => d.year === highlightYear || d.year === 1990), {
+          x: 'year',
+          y: 'share',
+          text: d => `${d.share}%`,
+          dy: -15,
+          fontSize: 14,
+          fontWeight: 'bold',
+        }),
+      ],
+    });
+
+    container.appendChild(chart);
+  }
+
+  // Initialize charts
+  document.addEventListener('DOMContentLoaded', () => {
+    renderGdpChart(1990);
+    renderEuChart(1990);
+
+    // Listen for scroll events on GDP section
+    const gdpScrolly = document.getElementById('gdp-scrolly');
+    if (gdpScrolly) {
+      gdpScrolly.addEventListener('stepchange', ((e: CustomEvent) => {
+        const step = e.detail.element;
+        const year = parseInt(step.dataset.year || '1990');
+        if (year !== currentGdpYear) {
+          currentGdpYear = year;
+          renderGdpChart(year);
+        }
+      }) as EventListener);
+    }
+
+    // Listen for scroll events on Europe section
+    const euScrolly = document.getElementById('europe-scrolly');
+    if (euScrolly) {
+      euScrolly.addEventListener('stepchange', ((e: CustomEvent) => {
+        const step = e.detail.element;
+        const year = parseInt(step.dataset.euYear || '1990');
+        if (year !== currentEuYear) {
+          currentEuYear = year;
+          renderEuChart(year);
+        }
+      }) as EventListener);
+    }
+  });
+
+  // Handle resize
+  let resizeTimeout: ReturnType<typeof setTimeout>;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      renderGdpChart(currentGdpYear);
+      renderEuChart(currentEuYear);
+    }, 250);
+  });
+</script>

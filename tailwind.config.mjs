@@ -4,7 +4,6 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Near-black for text and primary elements
         ink: {
           50: '#f7f7f7',
           100: '#e3e3e3',
@@ -18,30 +17,75 @@ export default {
           900: '#1a1a1a',
           950: '#0d0d0d',
         },
-        // Warm paper tones
         paper: {
-          50: '#fafafa',
+          50: '#fafaf9',
           100: '#f5f5f4',
           200: '#e7e5e4',
         },
-        // Single accent - muted amber for warnings/highlights only
         accent: {
           500: '#b45309',
           600: '#92400e',
         },
       },
       fontFamily: {
+        // Clean sans-serif for headings and UI
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        serif: ['Georgia', 'Times New Roman', 'serif'],
+        // High-quality serif for body text - better for long-form reading
+        serif: ['"Source Serif 4"', 'Georgia', 'Times New Roman', 'serif'],
+        // Monospace for data
+        mono: ['JetBrains Mono', 'Menlo', 'Monaco', 'monospace'],
       },
       fontSize: {
-        'display-xl': ['3.5rem', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '700' }],
-        'display-lg': ['2.75rem', { lineHeight: '1.15', letterSpacing: '-0.02em', fontWeight: '700' }],
-        'display-md': ['2rem', { lineHeight: '1.2', letterSpacing: '-0.01em', fontWeight: '700' }],
-        'display-sm': ['1.5rem', { lineHeight: '1.25', letterSpacing: '-0.01em', fontWeight: '600' }],
+        // Fluid type scale using clamp() for smooth responsive sizing
+        // Format: [size, { lineHeight, letterSpacing, fontWeight }]
+
+        // Body sizes
+        'xs': ['0.75rem', { lineHeight: '1.5' }],
+        'sm': ['0.875rem', { lineHeight: '1.5' }],
+        'base': ['1rem', { lineHeight: '1.7' }],
+        'lg': ['1.125rem', { lineHeight: '1.7' }],
+
+        // Fluid body for articles - scales from 18px to 21px
+        'article': ['clamp(1.125rem, 1rem + 0.5vw, 1.3125rem)', { lineHeight: '1.75' }],
+
+        // Display sizes - fluid scaling
+        'display-sm': ['clamp(1.25rem, 1rem + 1vw, 1.5rem)', {
+          lineHeight: '1.3',
+          letterSpacing: '-0.01em',
+          fontWeight: '600'
+        }],
+        'display-md': ['clamp(1.5rem, 1.25rem + 1.5vw, 2rem)', {
+          lineHeight: '1.2',
+          letterSpacing: '-0.02em',
+          fontWeight: '700'
+        }],
+        'display-lg': ['clamp(2rem, 1.5rem + 2vw, 2.75rem)', {
+          lineHeight: '1.15',
+          letterSpacing: '-0.02em',
+          fontWeight: '700'
+        }],
+        'display-xl': ['clamp(2.5rem, 2rem + 2.5vw, 3.5rem)', {
+          lineHeight: '1.1',
+          letterSpacing: '-0.02em',
+          fontWeight: '700'
+        }],
+
+        // Large stats/numbers
+        'stat': ['clamp(2rem, 1.5rem + 2vw, 3rem)', {
+          lineHeight: '1',
+          letterSpacing: '-0.02em',
+          fontWeight: '700'
+        }],
       },
       maxWidth: {
         'prose': '65ch',
+        'prose-wide': '75ch',
+      },
+      spacing: {
+        // Vertical rhythm based on line height
+        'rhythm': '1.75rem',
+        'rhythm-2': '3.5rem',
+        'rhythm-3': '5.25rem',
       },
     },
   },

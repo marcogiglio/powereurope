@@ -7,13 +7,15 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
   }
 
   body {
-    @apply text-ink-900 bg-white;
-    font-feature-settings: "kern" 1, "liga" 1;
+    @apply text-ink-900 bg-white font-sans;
   }
 
+  /* Headings - Sans-serif for clarity */
   h1, h2, h3, h4, h5, h6 {
     @apply font-sans text-ink-950;
     text-wrap: balance;
@@ -23,78 +25,186 @@
   h2 { @apply text-display-md md:text-display-lg; }
   h3 { @apply text-display-sm md:text-display-md; }
 
-  /* Prose - clean, readable */
-  .prose {
-    @apply text-ink-800 leading-7;
-    max-width: 65ch;
+  /* Selection */
+  ::selection {
+    @apply bg-ink-950 text-white;
   }
 
-  .prose p { @apply mb-5; }
-
-  .prose h2 {
-    @apply text-xl font-bold mt-12 mb-4 text-ink-950;
-  }
-
-  .prose h3 {
-    @apply text-lg font-semibold mt-8 mb-3 text-ink-950;
-  }
-
-  .prose ul, .prose ol {
-    @apply mb-5 pl-5;
-  }
-
-  .prose li { @apply mb-1.5; }
-
-  .prose blockquote {
-    @apply border-l-2 border-ink-300 pl-5 text-ink-600 my-6;
-  }
-
-  .prose a {
-    @apply text-ink-950 underline underline-offset-2 decoration-ink-300 hover:decoration-ink-900;
-  }
-
-  .prose strong {
-    @apply font-semibold text-ink-950;
-  }
-
-  .prose table {
-    @apply w-full text-sm my-8;
-  }
-
-  .prose th {
-    @apply text-left font-semibold text-ink-950 border-b-2 border-ink-950 pb-2 pr-4;
-  }
-
-  .prose td {
-    @apply border-b border-ink-200 py-3 pr-4 align-top;
-  }
-
-  .prose figure {
-    @apply my-8;
-  }
-
-  .prose figcaption {
-    @apply text-sm text-ink-500 mt-2;
+  /* Focus states */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-ink-950;
   }
 }
 
 @layer components {
-  /* Minimal buttons */
-  .btn {
-    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium transition-colors;
+  /* ==========================================================================
+     PROSE - Premium long-form typography
+     ========================================================================== */
+
+  .prose {
+    @apply font-serif text-article text-ink-800;
+    max-width: 65ch;
   }
 
-  .btn-primary {
-    @apply bg-ink-950 text-white hover:bg-ink-800;
+  .prose > * + * {
+    margin-top: 1.5em;
   }
 
-  .btn-secondary {
-    @apply border border-ink-300 text-ink-900 hover:border-ink-900;
+  /* Headings in prose */
+  .prose h2 {
+    @apply font-sans text-display-sm font-bold mt-16 mb-6 text-ink-950;
   }
 
-  /* Layout */
+  .prose h3 {
+    @apply font-sans text-lg font-semibold mt-12 mb-4 text-ink-950;
+  }
+
+  /* Paragraphs */
+  .prose p {
+    @apply mb-6;
+    hanging-punctuation: first last;
+  }
+
+  /* Lead paragraph */
+  .prose-lead,
+  .prose > p:first-of-type {
+    @apply text-lg text-ink-700;
+    line-height: 1.65;
+  }
+
+  /* Links */
+  .prose a {
+    @apply text-ink-950 underline decoration-ink-300 underline-offset-[3px]
+           transition-colors hover:decoration-ink-950;
+  }
+
+  /* Bold */
+  .prose strong {
+    @apply font-semibold text-ink-950;
+  }
+
+  /* Italic */
+  .prose em {
+    font-style: italic;
+  }
+
+  /* Lists */
+  .prose ul,
+  .prose ol {
+    @apply mb-6 pl-6;
+  }
+
+  .prose ul {
+    list-style-type: disc;
+  }
+
+  .prose ol {
+    list-style-type: decimal;
+  }
+
+  .prose li {
+    @apply mb-2 pl-2;
+  }
+
+  .prose li::marker {
+    @apply text-ink-400;
+  }
+
+  /* Nested lists */
+  .prose li > ul,
+  .prose li > ol {
+    @apply mt-2 mb-0;
+  }
+
+  /* Blockquotes */
+  .prose blockquote {
+    @apply border-l-2 border-ink-950 pl-6 my-8 text-ink-700 italic;
+  }
+
+  .prose blockquote p {
+    @apply mb-0;
+  }
+
+  /* Horizontal rules */
+  .prose hr {
+    @apply border-t border-ink-200 my-12;
+  }
+
+  /* Code inline */
+  .prose code {
+    @apply font-mono text-sm bg-ink-100 px-1.5 py-0.5 rounded;
+  }
+
+  /* Code blocks */
+  .prose pre {
+    @apply font-mono text-sm bg-ink-950 text-ink-100 p-6 my-8 overflow-x-auto rounded;
+  }
+
+  .prose pre code {
+    @apply bg-transparent p-0;
+  }
+
+  /* Tables */
+  .prose table {
+    @apply w-full text-sm my-10 font-sans;
+  }
+
+  .prose thead {
+    @apply border-b-2 border-ink-950;
+  }
+
+  .prose th {
+    @apply text-left font-semibold text-ink-950 pb-3 pr-6;
+  }
+
+  .prose td {
+    @apply border-b border-ink-200 py-4 pr-6 align-top;
+  }
+
+  .prose tbody tr:last-child td {
+    @apply border-b-0;
+  }
+
+  /* Table number alignment */
+  .prose td:first-child {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Figures */
+  .prose figure {
+    @apply my-10;
+  }
+
+  .prose figcaption {
+    @apply text-sm text-ink-500 mt-3 font-sans;
+  }
+
+  /* Images */
+  .prose img {
+    @apply w-full my-8;
+  }
+
+  /* Small text / captions */
+  .prose small {
+    @apply text-sm text-ink-500;
+  }
+
+  /* Superscript / footnotes */
+  .prose sup {
+    @apply text-xs text-ink-500;
+  }
+
+  /* Drop cap for articles */
+  .prose-dropcap > p:first-of-type::first-letter {
+    @apply float-left text-6xl font-bold leading-none mr-3 mt-1 text-ink-950 font-sans;
+  }
+
+  /* ==========================================================================
+     LAYOUT
+     ========================================================================== */
+
   .section {
-    @apply py-16 md:py-20;
+    @apply py-16 md:py-24;
   }
 
   .container-narrow {
@@ -105,60 +215,158 @@
     @apply max-w-5xl mx-auto px-5;
   }
 
-  /* Data elements - minimal */
-  .chart-container {
-    @apply border border-ink-200 p-5 my-8;
+  .container-full {
+    @apply max-w-7xl mx-auto px-5;
   }
 
+  /* ==========================================================================
+     BUTTONS
+     ========================================================================== */
+
+  .btn {
+    @apply inline-flex items-center justify-center px-5 py-2.5
+           text-sm font-medium font-sans transition-all;
+  }
+
+  .btn-primary {
+    @apply bg-ink-950 text-white hover:bg-ink-800;
+  }
+
+  .btn-secondary {
+    @apply border border-ink-300 text-ink-900 hover:border-ink-950 hover:bg-ink-50;
+  }
+
+  /* ==========================================================================
+     DATA ELEMENTS
+     ========================================================================== */
+
+  .chart-container {
+    @apply border border-ink-200 p-6 my-10 bg-white;
+  }
+
+  /* Stats */
+  .stat {
+    @apply border-t-2 border-ink-950 pt-4;
+  }
+
+  .stat-value {
+    @apply text-stat text-ink-950 font-sans tabular-nums;
+  }
+
+  .stat-label {
+    @apply text-sm text-ink-600 mt-2 font-sans;
+  }
+
+  /* Data tables */
   .data-table {
-    @apply w-full text-sm;
+    @apply w-full text-sm font-sans;
   }
 
   .data-table th {
-    @apply text-left font-semibold text-ink-950 border-b-2 border-ink-950 pb-2;
+    @apply text-left font-semibold text-ink-950 border-b-2 border-ink-950 pb-3;
   }
 
   .data-table td {
-    @apply border-b border-ink-100 py-3;
+    @apply border-b border-ink-100 py-4;
   }
 
   .data-table tr:hover td {
     @apply bg-paper-50;
   }
 
-  /* Stats */
-  .stat {
-    @apply border-t-2 border-ink-950 pt-3;
-  }
+  /* ==========================================================================
+     CALLOUTS
+     ========================================================================== */
 
-  .stat-value {
-    @apply text-3xl font-bold text-ink-950 tabular-nums;
-  }
-
-  .stat-label {
-    @apply text-sm text-ink-600 mt-1;
-  }
-
-  /* Callouts - minimal */
   .callout {
-    @apply border-l-2 border-ink-950 pl-5 py-1 my-6;
+    @apply border-l-2 border-ink-950 pl-6 py-2 my-8 font-sans;
   }
 
   .callout-warning {
-    @apply border-l-2 border-accent-500 pl-5 py-1 my-6 bg-amber-50/50;
+    @apply border-l-2 border-accent-500 pl-6 py-4 my-8 bg-amber-50/50 font-sans;
   }
 
-  /* Labels */
+  /* ==========================================================================
+     LABELS & DIVIDERS
+     ========================================================================== */
+
   .label {
-    @apply text-xs font-medium uppercase tracking-wider text-ink-500;
+    @apply text-xs font-medium uppercase tracking-wider text-ink-500 font-sans;
   }
 
-  /* Dividers */
   .divider {
-    @apply border-t border-ink-200 my-8;
+    @apply border-t border-ink-200 my-10;
   }
 
   .divider-heavy {
-    @apply border-t-2 border-ink-950 my-8;
+    @apply border-t-2 border-ink-950 my-10;
+  }
+
+  /* ==========================================================================
+     SCROLLYTELLING
+     ========================================================================== */
+
+  .scrolly-container {
+    @apply relative;
+  }
+
+  /* Sticky graphic panel */
+  .scrolly-graphic {
+    @apply sticky top-0 h-screen w-full flex items-center justify-center bg-white z-10;
+  }
+
+  /* Steps container */
+  .scrolly-steps {
+    @apply relative z-20;
+  }
+
+  /* Individual step */
+  .scrolly-step {
+    @apply min-h-screen flex items-center py-20;
+  }
+
+  .scrolly-step-content {
+    @apply bg-white/95 backdrop-blur-sm p-8 md:p-10 max-w-lg mx-auto shadow-lg border border-ink-100;
+  }
+
+  /* Mobile: stack instead of sticky */
+  @media (max-width: 768px) {
+    .scrolly-graphic {
+      @apply relative h-auto min-h-[60vh] sticky top-0;
+    }
+
+    .scrolly-step {
+      @apply min-h-0 py-8;
+    }
+
+    .scrolly-step-content {
+      @apply shadow-none border-0 bg-white p-5;
+    }
+  }
+
+  /* ==========================================================================
+     UTILITIES
+     ========================================================================== */
+
+  /* Tabular numbers for data */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Small caps */
+  .small-caps {
+    font-variant-caps: small-caps;
+    letter-spacing: 0.05em;
+  }
+
+  /* Balance text */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* No orphans */
+  .no-orphans {
+    orphans: 3;
+    widows: 3;
   }
 }

@@ -1,0 +1,139 @@
+---
+/**
+ * ScrollySection - Scrollytelling component
+ *
+ * Creates a scroll-driven narrative with a sticky graphic that updates
+ * as the user scrolls through content steps.
+ *
+ * Usage:
+ * <ScrollySection id="my-scrolly">
+ *   <div slot="graphic">
+ *     <!-- Your chart/visualization goes here -->
+ *   </div>
+ *   <div slot="steps">
+ *     <div class="step" data-step="0">Step 1 content</div>
+ *     <div class="step" data-step="1">Step 2 content</div>
+ *   </div>
+ * </ScrollySection>
+ */
+
+interface Props {
+  id: string;
+  graphicPosition?: 'left' | 'right';
+}
+
+const { id, graphicPosition = 'right' } = Astro.props;
+---
+
+<div
+  class="scrolly-wrapper"
+  id={id}
+  data-graphic-position={graphicPosition}
+>
+  <div class={`scrolly-inner ${graphicPosition === 'left' ? 'flex-row-reverse' : ''}`}>
+    <!-- Steps column -->
+    <div class="scrolly-steps-column">
+      <slot name="steps" />
+    </div>
+
+    <!-- Sticky graphic column -->
+    <div class="scrolly-graphic-column">
+      <div class="scrolly-graphic-inner">
+        <slot name="graphic" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .scrolly-wrapper {
+    @apply relative;
+  }
+
+  .scrolly-inner {
+    @apply flex flex-col lg:flex-row;
+  }
+
+  /* Steps column - scrollable content */
+  .scrolly-steps-column {
+    @apply w-full lg:w-[45%] relative z-20;
+  }
+
+  /* Graphic column - sticky visualization */
+  .scrolly-graphic-column {
+    @apply w-full lg:w-[55%] lg:h-auto;
+  }
+
+  .scrolly-graphic-inner {
+    @apply lg:sticky lg:top-0 lg:h-screen flex items-center justify-center p-6 lg:p-10;
+  }
+
+  /* Mobile: graphic at top, then steps below */
+  @media (max-width: 1023px) {
+    .scrolly-inner {
+      @apply flex-col;
+    }
+
+    .scrolly-graphic-column {
+      @apply sticky top-0 z-10 bg-white border-b border-ink-200;
+    }
+
+    .scrolly-graphic-inner {
+      @apply h-[50vh] min-h-[300px] max-h-[500px];
+    }
+
+    .scrolly-steps-column {
+      @apply bg-white;
+    }
+  }
+</style>
+
+<script>
+  import scrollama from 'scrollama';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Initialize each scrolly section
+    document.querySelectorAll('.scrolly-wrapper').forEach((wrapper) => {
+      const id = wrapper.id;
+      const steps = wrapper.querySelectorAll('.step');
+
+      if (steps.length === 0) return;
+
+      const scroller = scrollama();
+
+      scroller
+        .setup({
+          step: `#${id} .step`,
+          offset: 0.5,
+          progress: true,
+        })
+        .onStepEnter((response) => {
+          // Remove active class from all steps
+          steps.forEach(step => step.classList.remove('is-active'));
+          // Add active class to current step
+          response.element.classList.add('is-active');
+
+          // Dispatch custom event for chart updates
+          wrapper.dispatchEvent(new CustomEvent('stepchange', {
+            detail: {
+              index: response.index,
+              direction: response.direction,
+              element: response.element,
+            }
+          }));
+        })
+        .onStepProgress((response) => {
+          // Dispatch progress event for animations
+          wrapper.dispatchEvent(new CustomEvent('stepprogress', {
+            detail: {
+              index: response.index,
+              progress: response.progress,
+            }
+          }));
+        });
+
+      // Handle resize
+      window.addEventListener('resize', scroller.resize);
+    });
+  });
+</script>

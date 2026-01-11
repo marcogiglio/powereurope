@@ -13,7 +13,12 @@
     "type": "git",
     "url": "git+https://github.com/marcogiglio/powereurope.git"
   },
-  "keywords": ["energy", "europe", "nuclear", "policy"],
+  "keywords": [
+    "energy",
+    "europe",
+    "nuclear",
+    "policy"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -26,6 +31,8 @@
     "@observablehq/plot": "^0.6.17",
     "astro": "^5.16.8",
     "d3": "^7.9.0",
+    "intersection-observer": "^0.12.2",
+    "scrollama": "^3.2.0",
     "tailwindcss": "^3.4.19"
   }
 }
