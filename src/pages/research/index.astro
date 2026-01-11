@@ -3,12 +3,25 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const articles = [
   {
+    slug: 'democracy-decline',
+    title: 'The Retreat of Liberal Democracy',
+    description: 'How authoritarian regimes have gained economic and political ground over three decades while democracies faltered—and what energy has to do with it.',
+    date: new Date('2026-01-11'),
+    readTime: '20 min read',
+  },
+  {
+    slug: 'energy-strategy',
+    title: 'A European Energy Strategy',
+    description: 'Why Europe needs coal as a bridge, why renewables alone cannot work, and how nuclear provides the only viable path to energy sovereignty.',
+    date: new Date('2026-01-11'),
+    readTime: '25 min read',
+  },
+  {
     slug: 'smr-explained',
     title: 'Small Modular Reactors Explained',
     description: 'What SMRs are, how they work, and why they matter for European energy independence.',
     date: new Date('2026-01-08'),
     readTime: '12 min read',
-    tags: ['nuclear', 'SMR', 'technology'],
   },
 ];
 ---
@@ -16,36 +29,27 @@ const articles = [
 <BaseLayout title="Research | PowerEurope" description="In-depth explainers on energy technology, policy, and economics.">
   <section class="section">
     <div class="container-narrow">
-      <header class="mb-12">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Research</h1>
-        <p class="text-xl text-gray-600">
-          In-depth explainers on energy technology, policy, and economics. We aim to make complex topics accessible without sacrificing accuracy.
+      <header class="mb-12 border-b border-ink-200 pb-8">
+        <p class="label mb-4">Analysis</p>
+        <h1 class="mb-4">Research</h1>
+        <p class="text-xl text-ink-600">
+          In-depth explainers on energy technology, policy, and economics.
         </p>
       </header>
 
       <div class="space-y-8">
         {articles.map((article) => (
-          <article class="border-b border-gray-200 pb-8">
-            <div class="flex items-center gap-3 mb-3">
-              <span class="text-xs font-semibold px-2 py-1 rounded text-primary-600 bg-primary-50">
-                Research
-              </span>
-              <time datetime={article.date.toISOString()} class="text-sm text-gray-500">
-                {article.date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
-              </time>
-              <span class="text-sm text-gray-400">{article.readTime}</span>
-            </div>
-            <h2 class="text-2xl font-bold mb-3">
-              <a href={`/research/${article.slug}`} class="hover:text-primary-700 transition-colors">
+          <article class="border-b border-ink-100 pb-8">
+            <time datetime={article.date.toISOString()} class="text-sm text-ink-500 block mb-2">
+              {article.date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </time>
+            <h2 class="text-xl font-bold mb-2">
+              <a href={`/research/${article.slug}`} class="hover:underline">
                 {article.title}
               </a>
             </h2>
-            <p class="text-gray-600 mb-4">{article.description}</p>
-            <div class="flex gap-2">
-              {article.tags.map((tag) => (
-                <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">{tag}</span>
-              ))}
-            </div>
+            <p class="text-ink-600 mb-2">{article.description}</p>
+            <span class="text-sm text-ink-400">{article.readTime}</span>
           </article>
         ))}
       </div>

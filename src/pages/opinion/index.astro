@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-// In production, this would come from a content collection
 const articles = [
   {
     slug: 'why-coal-bridge',
@@ -9,7 +8,6 @@ const articles = [
     description: 'The uncomfortable truth about European energy transition: we need coal now to build nuclear tomorrow.',
     date: new Date('2026-01-10'),
     author: 'PowerEurope',
-    tags: ['coal', 'nuclear', 'energy transition'],
   },
 ];
 ---
@@ -17,38 +15,27 @@ const articles = [
 <BaseLayout title="Opinion | PowerEurope" description="Analysis, commentary, and policy positions on European energy sovereignty.">
   <section class="section">
     <div class="container-narrow">
-      <header class="mb-12">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Opinion</h1>
-        <p class="text-xl text-gray-600">
+      <header class="mb-12 border-b border-ink-200 pb-8">
+        <p class="label mb-4">Commentary</p>
+        <h1 class="mb-4">Opinion</h1>
+        <p class="text-xl text-ink-600">
           Analysis, commentary, and policy positions. We take sides—because neutrality on existential questions is not a virtue.
         </p>
       </header>
 
       <div class="space-y-8">
         {articles.map((article) => (
-          <article class="border-b border-gray-200 pb-8">
-            <div class="flex items-center gap-3 mb-3">
-              <span class="text-xs font-semibold px-2 py-1 rounded text-accent-600 bg-accent-50">
-                Opinion
-              </span>
-              <time datetime={article.date.toISOString()} class="text-sm text-gray-500">
-                {article.date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
-              </time>
-            </div>
-            <h2 class="text-2xl font-bold mb-3">
-              <a href={`/opinion/${article.slug}`} class="hover:text-primary-700 transition-colors">
+          <article class="border-b border-ink-100 pb-8">
+            <time datetime={article.date.toISOString()} class="text-sm text-ink-500 block mb-2">
+              {article.date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </time>
+            <h2 class="text-xl font-bold mb-2">
+              <a href={`/opinion/${article.slug}`} class="hover:underline">
                 {article.title}
               </a>
             </h2>
-            <p class="text-gray-600 mb-4">{article.description}</p>
-            <div class="flex items-center justify-between">
-              <span class="text-sm text-gray-500">By {article.author}</span>
-              <div class="flex gap-2">
-                {article.tags.map((tag) => (
-                  <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">{tag}</span>
-                ))}
-              </div>
-            </div>
+            <p class="text-ink-600 mb-2">{article.description}</p>
+            <span class="text-sm text-ink-400">By {article.author}</span>
           </article>
         ))}
       </div>

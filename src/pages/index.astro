@@ -1,357 +1,144 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import EmailSignup from '../components/EmailSignup.astro';
-import Chart from '../components/Chart.astro';
 ---
 
-<BaseLayout title="PowerEurope | Europe Must Build Again">
-  <!-- Hero - Editorial style with image -->
-  <section class="relative min-h-[85vh] flex items-center bg-navy-950">
-    <!-- Background image with overlay -->
-    <div class="absolute inset-0">
-      <img
-        src="/images/hero-frankfurt.jpg"
-        alt="European industrial cityscape"
-        class="w-full h-full object-cover opacity-40"
-      />
-      <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/80 to-navy-950/60"></div>
-    </div>
-
-    <div class="relative container-wide py-20">
-      <div class="max-w-3xl">
-        <p class="label text-gold-400 mb-4">A citizen movement for energy sovereignty</p>
-        <h1 class="text-white mb-6">
-          Europe Must<br />Build Again
-        </h1>
-        <p class="text-xl md:text-2xl text-slate-300 mb-8 leading-relaxed max-w-2xl">
-          Cheap energy is the foundation of everything—jobs, defense, AI, and yes, environmental protection. Without power, Europe has no future.
-        </p>
-        <div class="flex flex-wrap gap-4">
-          <a href="#join" class="btn btn-accent px-6 py-3">
-            Join the Movement
-          </a>
-          <a href="/data" class="btn btn-outline border-slate-500 text-white hover:bg-white/10 px-6 py-3">
-            See the Data
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-400">
-      <svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-      </svg>
-    </div>
-  </section>
-
-  <!-- The Problem -->
-  <section class="section bg-white">
+<BaseLayout title="PowerEurope">
+  <!-- Hero - Minimal, text-focused -->
+  <section class="py-16 md:py-24 border-b border-ink-200">
     <div class="container-narrow">
-      <p class="label text-navy-600 mb-3">The Problem</p>
-      <h2 class="mb-8">Wealth Protects the Environment. Poverty Does Not.</h2>
-
-      <div class="prose text-lg">
-        <p>We were told that expensive energy was the price of a green future. <strong>We were wrong.</strong></p>
-        <p>
-          The countries that protect their forests, clean their rivers, and invest in new technology
-          are wealthy countries. Poor countries strip their land, burn what they have, and survive.
-        </p>
-        <p>
-          Europe is choosing decline. High energy costs will not make us green—they will make us poor.
-          And poor Europe will not protect anything.
-        </p>
-      </div>
-
-      <div class="mt-10 p-6 bg-slate-50 border-l-2 border-navy-800">
-        <p class="text-lg text-slate-700">
-          China burns coal today to fund nuclear tomorrow. America uses cheap gas to power AI dominance.
-          <strong class="text-slate-900">Europe taxes itself and calls it virtue.</strong>
-        </p>
+      <p class="label mb-4">A citizen movement for energy sovereignty</p>
+      <h1 class="mb-6">Europe Must Build Again</h1>
+      <p class="text-xl text-ink-600 mb-8 max-w-xl">
+        Cheap energy is the foundation of prosperity, security, and environmental protection. Europe is pricing itself out of the future.
+      </p>
+      <div class="flex gap-4">
+        <a href="/research/energy-strategy" class="btn btn-primary">Read our analysis</a>
+        <a href="/data" class="btn btn-secondary">See the data</a>
       </div>
     </div>
   </section>
 
-  <!-- The Stakes: Energy Chart -->
-  <section class="section bg-slate-50">
+  <!-- Key stat -->
+  <section class="py-12 border-b border-ink-200">
     <div class="container-wide">
-      <div class="max-w-3xl mb-12">
-        <p class="label text-navy-600 mb-3">The Stakes</p>
-        <h2 class="mb-4">Europe Is Priced Out of the Future</h2>
-        <p class="text-lg text-slate-600">
-          Within ten years, AI will reshape every industry, every military, every economy.
-          Training a frontier model costs billions—mostly energy. Europe pays 2-3x more than competitors.
-        </p>
-      </div>
-
-      <!-- Energy price divergence chart -->
-      <div class="bg-white border border-slate-200 rounded p-6 mb-8">
-        <div class="flex items-start justify-between mb-4">
-          <div>
-            <h3 class="text-lg font-semibold text-slate-900">Industrial Electricity Prices</h3>
-            <p class="text-sm text-slate-500">EUR per MWh, 2008-2024</p>
-          </div>
-          <a href="/data/energy-prices" class="text-sm text-navy-700 hover:underline">Full data →</a>
-        </div>
-        <div id="energy-divergence-hero" class="h-[400px]">
-          <div class="flex items-center justify-center h-full text-slate-400">
-            Loading chart...
-          </div>
-        </div>
-        <p class="text-xs text-slate-500 mt-4">Source: Eurostat, EIA, IEA. Updated December 2024.</p>
-      </div>
-
-      <!-- Three column comparison -->
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-white border border-slate-200 rounded p-6">
-          <p class="label text-emerald-600 mb-2">United States</p>
-          <p class="stat-value text-emerald-600">$58</p>
-          <p class="stat-label">per MWh</p>
-          <p class="text-sm text-slate-600 mt-4">
-            Cheap gas, growing nuclear, light regulation. <strong>Building AI.</strong>
-          </p>
-        </div>
-        <div class="bg-white border border-slate-200 rounded p-6">
-          <p class="label text-red-600 mb-2">China</p>
-          <p class="stat-value text-red-600">$62</p>
-          <p class="stat-label">per MWh</p>
-          <p class="text-sm text-slate-600 mt-4">
-            Massive nuclear expansion, state-controlled prices. <strong>Building AI.</strong>
-          </p>
-        </div>
-        <div class="bg-white border border-slate-200 rounded p-6">
-          <p class="label text-navy-600 mb-2">Europe</p>
-          <p class="stat-value text-navy-900">€145</p>
-          <p class="stat-label">per MWh</p>
-          <p class="text-sm text-slate-600 mt-4">
-            Most expensive electricity in the developed world. <strong>Regulating AI.</strong>
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- The Plan -->
-  <section class="section bg-white">
-    <div class="container-wide">
-      <div class="max-w-3xl mb-12">
-        <p class="label text-navy-600 mb-3">The Plan</p>
-        <h2 class="mb-4">Energy Sovereignty in 15 Years</h2>
-        <p class="text-lg text-slate-600">
-          We are not ideologues. We are engineers, economists, citizens who can read a chart. Here is what works.
-        </p>
-      </div>
-
       <div class="grid md:grid-cols-3 gap-8">
-        <!-- Immediate -->
-        <div class="border-t-2 border-gold-500 pt-6">
-          <p class="label text-gold-600 mb-1">Immediate</p>
-          <p class="text-sm text-slate-500 mb-4">Now – 2027</p>
-          <ul class="space-y-3 text-slate-700">
-            <li class="flex gap-3">
-              <span class="text-gold-500 mt-1">—</span>
-              <span>Suspend carbon taxes and emissions trading</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-gold-500 mt-1">—</span>
-              <span>Reopen coal plants as bridge capacity</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-gold-500 mt-1">—</span>
-              <span>Emergency restart of closable nuclear</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-gold-500 mt-1">—</span>
-              <span>Wartime regulatory framework</span>
-            </li>
-          </ul>
+        <div class="stat">
+          <p class="stat-value">€145</p>
+          <p class="stat-label">EU industrial electricity price per MWh</p>
         </div>
-
-        <!-- Medium-term -->
-        <div class="border-t-2 border-navy-400 pt-6">
-          <p class="label text-navy-600 mb-1">Medium-term</p>
-          <p class="text-sm text-slate-500 mb-4">2027 – 2032</p>
-          <ul class="space-y-3 text-slate-700">
-            <li class="flex gap-3">
-              <span class="text-navy-400 mt-1">—</span>
-              <span>Massive grid expansion</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-navy-400 mt-1">—</span>
-              <span>License proven reactor designs from Korea and US</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-navy-400 mt-1">—</span>
-              <span>Deploy small modular reactors at scale</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-navy-400 mt-1">—</span>
-              <span>Build domestic uranium enrichment</span>
-            </li>
-          </ul>
+        <div class="stat">
+          <p class="stat-value">$58</p>
+          <p class="stat-label">US industrial electricity price per MWh</p>
         </div>
-
-        <!-- Long-term -->
-        <div class="border-t-2 border-emerald-500 pt-6">
-          <p class="label text-emerald-600 mb-1">Long-term</p>
-          <p class="text-sm text-slate-500 mb-4">2032 – 2040</p>
-          <ul class="space-y-3 text-slate-700">
-            <li class="flex gap-3">
-              <span class="text-emerald-500 mt-1">—</span>
-              <span>New nuclear fleet online across continent</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-emerald-500 mt-1">—</span>
-              <span>Coal phases out as baseload secured</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-emerald-500 mt-1">—</span>
-              <span>Energy cost parity with US and China</span>
-            </li>
-            <li class="flex gap-3">
-              <span class="text-emerald-500 mt-1">—</span>
-              <span>European AI infrastructure on clean power</span>
-            </li>
-          </ul>
+        <div class="stat">
+          <p class="stat-value">2.5×</p>
+          <p class="stat-label">Europe's cost disadvantage</p>
         </div>
       </div>
+      <p class="text-sm text-ink-500 mt-6">Source: Eurostat, EIA (2024)</p>
+    </div>
+  </section>
 
-      <p class="text-center text-lg font-medium mt-12 text-slate-800">
-        Coal is the bridge. Nuclear is the destination. Denial is the cliff.
+  <!-- Chart -->
+  <section class="section border-b border-ink-200">
+    <div class="container-wide">
+      <h2 class="text-display-sm mb-2">The Divergence</h2>
+      <p class="text-ink-600 mb-8 max-w-xl">
+        European industrial electricity prices have risen while competitors' prices remained stable. The gap is structural.
+      </p>
+      <div class="chart-container">
+        <div id="price-chart" class="h-[350px]">
+          <p class="text-ink-400 text-sm">Loading...</p>
+        </div>
+      </div>
+      <p class="text-sm text-ink-500 mt-4">
+        Industrial electricity prices, EUR/MWh. Source: Eurostat, EIA, IEA.
+        <a href="/data/energy-prices" class="underline">Full data →</a>
       </p>
     </div>
   </section>
 
-  <!-- Nuclear Image Break -->
-  <section class="relative h-[50vh] min-h-[400px]">
+  <!-- The argument -->
+  <section class="section border-b border-ink-200">
+    <div class="container-narrow">
+      <h2 class="text-display-sm mb-8">The Problem</h2>
+      <div class="prose">
+        <p>
+          Europe has the most expensive industrial electricity in the developed world. This is not an accident—it is the result of policy choices: carbon pricing, renewable subsidies, nuclear phase-outs, and regulatory barriers.
+        </p>
+        <p>
+          The consequences are visible. Energy-intensive industries are leaving. AI infrastructure is being built elsewhere. The gap between European and American productivity continues to widen.
+        </p>
+        <p>
+          <strong>The claim that expensive energy is the price of environmental protection is false.</strong> Wealthy countries protect their environments; poor countries cannot. Europe is choosing a path toward poverty.
+        </p>
+      </div>
+      <a href="/research/energy-strategy" class="inline-block mt-8 text-sm font-medium underline underline-offset-4">
+        Read our full analysis →
+      </a>
+    </div>
+  </section>
+
+  <!-- The plan - minimal -->
+  <section class="section border-b border-ink-200">
+    <div class="container-narrow">
+      <h2 class="text-display-sm mb-8">The Path Forward</h2>
+      <div class="space-y-6">
+        <div class="border-l-2 border-ink-950 pl-5">
+          <p class="font-semibold">Immediate: Coal as bridge</p>
+          <p class="text-ink-600 text-sm mt-1">
+            Suspend carbon taxes. Reopen coal capacity. Buy time for nuclear construction.
+          </p>
+        </div>
+        <div class="border-l-2 border-ink-300 pl-5">
+          <p class="font-semibold">Medium-term: Nuclear buildout</p>
+          <p class="text-ink-600 text-sm mt-1">
+            License proven reactor designs. Deploy SMRs. Build domestic fuel cycle.
+          </p>
+        </div>
+        <div class="border-l-2 border-ink-300 pl-5">
+          <p class="font-semibold">Long-term: Energy parity</p>
+          <p class="text-ink-600 text-sm mt-1">
+            Achieve cost parity with US and China. Phase out coal as nuclear comes online.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image break -->
+  <section class="relative h-[40vh] min-h-[300px]">
     <img
       src="/images/nuclear-cooling-towers.jpg"
-      alt="Nuclear power plant cooling towers"
-      class="w-full h-full object-cover"
+      alt="Nuclear power plant"
+      class="w-full h-full object-cover grayscale"
     />
-    <div class="absolute inset-0 bg-navy-950/60 flex items-center justify-center">
-      <div class="text-center text-white px-6">
-        <p class="text-2xl md:text-3xl font-bold max-w-2xl">
-          "The environmental movement was captured by people who prefer decline to construction."
-        </p>
-      </div>
-    </div>
   </section>
 
-  <!-- The Politics -->
-  <section class="section bg-navy-950 text-white">
+  <!-- Politics -->
+  <section class="section border-b border-ink-200 bg-ink-950 text-white">
     <div class="container-narrow">
-      <p class="label text-gold-400 mb-3">The Politics</p>
-      <h2 class="text-white mb-8">This Is Not Left vs Right</h2>
-
-      <div class="space-y-6 text-slate-300 text-lg">
-        <p>The right says: "The EU cannot be trusted with this."</p>
-        <p>The left says: "Nuclear is dangerous, coal is immoral."</p>
-        <p class="text-white font-semibold text-xl">We say: "Your grandchildren don't care about your party."</p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-6 mt-12">
-        <div class="border border-slate-700 rounded p-6">
-          <p class="label text-slate-400 mb-3">To the Right</p>
-          <p class="text-slate-300">
-            You want sovereignty? It requires energy. You want industry? It requires energy.
-            You want defense? It requires energy. <strong class="text-white">Help us build.</strong>
-          </p>
-        </div>
-        <div class="border border-slate-700 rounded p-6">
-          <p class="label text-slate-400 mb-3">To the Left</p>
-          <p class="text-slate-300">
-            You want to protect the climate? Wealth enables that. Poverty does not.
-            You want to protect democracy? It requires a Europe that can defend itself.
-            <strong class="text-white">Help us build.</strong>
-          </p>
-        </div>
-      </div>
-
-      <p class="text-center mt-12 text-slate-400">
-        One goal. Every European.
-      </p>
-    </div>
-  </section>
-
-  <!-- History -->
-  <section class="section bg-white">
-    <div class="container-wide">
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <p class="label text-navy-600 mb-3">The History</p>
-          <h2 class="mb-6">We Have Done This Before</h2>
-
-          <div class="prose text-lg">
-            <p>
-              In 1945, Europe was rubble. Within thirty years, we built the most prosperous,
-              peaceful civilization in human history.
-            </p>
-            <p>
-              We built nuclear plants. We built industries. We built institutions.
-              We did it because we chose to.
-            </p>
-            <p class="font-semibold text-slate-900">
-              We bear the scars of fascism. We know what weakness invites.
-              We know what happens when democracies cannot defend themselves.
-            </p>
-            <p>
-              Europe should be a beacon to the world. But beacons require power.
-            </p>
-          </div>
-        </div>
-        <div>
-          <img
-            src="/images/marshall-plan-1947.jpg"
-            alt="Marshall Plan poster, 1947"
-            class="w-full rounded shadow-lg"
-          />
-          <p class="text-sm text-slate-500 mt-3">Marshall Plan poster, 1947. Public domain.</p>
-        </div>
+      <h2 class="text-display-sm mb-8 text-white">Not Left, Not Right</h2>
+      <div class="prose text-ink-300">
+        <p>
+          Energy sovereignty is not a partisan issue. The right wants industrial capacity and defense capability. The left wants climate action and worker protection. Both require cheap, abundant energy.
+        </p>
+        <p class="text-white">
+          We work with anyone who wants Europe to build again.
+        </p>
       </div>
     </div>
   </section>
 
   <!-- Join -->
-  <section id="join" class="section bg-slate-50">
+  <section class="section">
     <div class="container-narrow">
-      <div class="text-center mb-12">
-        <p class="label text-navy-600 mb-3">Take Action</p>
-        <h2 class="mb-4">Join the Movement</h2>
-        <p class="text-lg text-slate-600 max-w-xl mx-auto">
-          Europe's energy future won't be decided by governments alone.
-          It will be decided by citizens who demand change.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-6 mb-12">
-        <div class="bg-white border border-slate-200 rounded p-6">
-          <p class="font-semibold mb-2">Share This</p>
-          <p class="text-sm text-slate-600">
-            The message spreads when you spread it. Talk to friends, post on social media.
-          </p>
-        </div>
-        <div class="bg-white border border-slate-200 rounded p-6">
-          <p class="font-semibold mb-2">Contact Representatives</p>
-          <p class="text-sm text-slate-600">
-            Demand they take a position on energy sovereignty. Make it an issue they cannot ignore.
-          </p>
-        </div>
-        <div class="bg-white border border-slate-200 rounded p-6">
-          <p class="font-semibold mb-2">Fund the Movement</p>
-          <p class="text-sm text-slate-600">
-            We are citizen-funded. No party, no corporation, no government.
-          </p>
-        </div>
-      </div>
-
-      <div class="bg-white border border-slate-200 rounded p-8">
-        <EmailSignup variant="default" heading="Stay informed" subheading="Get updates on European energy policy and campaign progress. 2-4 emails per month." />
-      </div>
-
-      <p class="text-center mt-8 text-slate-500 text-sm">
-        Not left. Not right. <strong class="text-slate-700">Forward.</strong>
+      <h2 class="text-display-sm mb-4">Stay Informed</h2>
+      <p class="text-ink-600 mb-8">
+        Receive our research and analysis. No spam.
       </p>
+      <EmailSignup variant="compact" />
     </div>
   </section>
 </BaseLayout>
@@ -360,7 +147,6 @@ import Chart from '../components/Chart.astro';
   import * as Plot from '@observablehq/plot';
 
   const data = [
-    { year: 2008, region: 'Europe', price: 92 },
     { year: 2010, region: 'Europe', price: 95 },
     { year: 2012, region: 'Europe', price: 105 },
     { year: 2014, region: 'Europe', price: 112 },
@@ -369,7 +155,6 @@ import Chart from '../components/Chart.astro';
     { year: 2020, region: 'Europe', price: 95 },
     { year: 2022, region: 'Europe', price: 180 },
     { year: 2024, region: 'Europe', price: 145 },
-    { year: 2008, region: 'United States', price: 58 },
     { year: 2010, region: 'United States', price: 55 },
     { year: 2012, region: 'United States', price: 50 },
     { year: 2014, region: 'United States', price: 52 },
@@ -378,7 +163,6 @@ import Chart from '../components/Chart.astro';
     { year: 2020, region: 'United States', price: 45 },
     { year: 2022, region: 'United States', price: 65 },
     { year: 2024, region: 'United States', price: 58 },
-    { year: 2008, region: 'China', price: 55 },
     { year: 2010, region: 'China', price: 60 },
     { year: 2012, region: 'China', price: 62 },
     { year: 2014, region: 'China', price: 65 },
@@ -389,16 +173,16 @@ import Chart from '../components/Chart.astro';
     { year: 2024, region: 'China', price: 62 },
   ];
 
-  const container = document.getElementById('energy-divergence-hero');
+  const container = document.getElementById('price-chart');
   if (container) {
     container.innerHTML = '';
     const chart = Plot.plot({
       width: container.clientWidth,
-      height: 380,
-      marginLeft: 50,
-      marginRight: 90,
-      marginBottom: 35,
-      marginTop: 20,
+      height: 320,
+      marginLeft: 45,
+      marginRight: 80,
+      marginBottom: 30,
+      marginTop: 10,
       style: {
         background: 'transparent',
         fontSize: '11px',
@@ -407,43 +191,35 @@ import Chart from '../components/Chart.astro';
       x: {
         label: null,
         tickFormat: 'd',
-        ticks: [2008, 2012, 2016, 2020, 2024],
       },
       y: {
         label: null,
         grid: true,
         domain: [0, 200],
-        ticks: [0, 50, 100, 150, 200],
         tickFormat: d => `€${d}`,
       },
       color: {
         domain: ['Europe', 'United States', 'China'],
-        range: ['#102a43', '#059669', '#dc2626'],
+        range: ['#1a1a1a', '#666666', '#a4a4a4'],
       },
       marks: [
-        Plot.ruleY([0], { stroke: '#e2e8f0' }),
+        Plot.ruleY([0], { stroke: '#e3e3e3' }),
         Plot.line(data, {
           x: 'year',
           y: 'price',
           stroke: 'region',
-          strokeWidth: 2.5,
-        }),
-        Plot.dot(data.filter(d => d.year === 2024), {
-          x: 'year',
-          y: 'price',
-          fill: 'region',
-          r: 4,
+          strokeWidth: d => d.region === 'Europe' ? 2.5 : 1.5,
         }),
         Plot.text(
           data.filter(d => d.year === 2024),
           {
             x: 'year',
             y: 'price',
-            text: d => `${d.region}`,
-            dx: 8,
+            text: 'region',
+            dx: 6,
             textAnchor: 'start',
             fill: 'region',
-            fontWeight: '600',
+            fontWeight: d => d.region === 'Europe' ? '600' : '400',
             fontSize: 11,
           }
         ),

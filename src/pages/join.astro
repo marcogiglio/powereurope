@@ -4,115 +4,113 @@ import EmailSignup from '../components/EmailSignup.astro';
 ---
 
 <BaseLayout title="Join the Movement | PowerEurope" description="Sign up, donate, or share. Help build a future where Europe has the energy to compete.">
-  <section class="section bg-primary-900 text-white">
+  <section class="py-16 bg-ink-950 text-white">
     <div class="container-narrow text-center">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6">Join the Movement</h1>
-      <p class="text-xl text-primary-200 max-w-2xl mx-auto">
-        Europe's energy future won't be decided by governments alone. It will be decided by citizens who demand change. Here's how you can help.
+      <p class="label text-ink-400 mb-4">Take Action</p>
+      <h1 class="text-white mb-6">Join the Movement</h1>
+      <p class="text-xl text-ink-300 max-w-2xl mx-auto">
+        Europe's energy future won't be decided by governments alone. It will be decided by citizens who demand change.
       </p>
     </div>
   </section>
 
   <!-- Sign up -->
-  <section id="signup" class="section bg-white">
+  <section id="signup" class="section border-b border-ink-200">
     <div class="container-narrow">
-      <div class="text-center mb-8">
-        <h2 class="text-3xl font-bold mb-4">Stay Informed</h2>
-        <p class="text-gray-600 max-w-xl mx-auto">
+      <div class="mb-8">
+        <h2 class="text-display-sm mb-4">Stay Informed</h2>
+        <p class="text-ink-600">
           Get updates on European energy policy, our research, and campaign progress. We send 2-4 emails per month.
         </p>
       </div>
 
-      <div class="max-w-xl mx-auto bg-gray-50 rounded-xl p-8">
-        <EmailSignup variant="default" heading="" subheading="" />
+      <div class="border border-ink-200 p-6">
+        <EmailSignup variant="compact" />
       </div>
     </div>
   </section>
 
   <!-- Donate -->
-  <section id="donate" class="section bg-gray-50">
+  <section id="donate" class="section border-b border-ink-200">
     <div class="container-narrow">
-      <div class="text-center mb-8">
-        <h2 class="text-3xl font-bold mb-4">Fund the Movement</h2>
-        <p class="text-gray-600 max-w-xl mx-auto">
-          We are citizen-funded. No party money. No corporate sponsors. No government grants. Your donation keeps us independent.
+      <div class="mb-8">
+        <h2 class="text-display-sm mb-4">Fund the Movement</h2>
+        <p class="text-ink-600">
+          We are citizen-funded. No party money. No corporate sponsors. No government grants.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-        <div class="bg-white rounded-xl p-6 text-center border-2 border-gray-200 hover:border-primary-500 transition-colors">
-          <div class="text-3xl font-bold text-gray-900 mb-2">€10</div>
-          <div class="text-gray-600 text-sm mb-4">Monthly</div>
-          <p class="text-sm text-gray-500 mb-4">Support our research and advocacy work.</p>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="border border-ink-200 p-6">
+          <p class="text-2xl font-bold mb-1">€10</p>
+          <p class="text-sm text-ink-500 mb-4">Monthly</p>
+          <p class="text-sm text-ink-600 mb-4">Support our research and advocacy work.</p>
           <button class="btn btn-secondary w-full" disabled>Coming Soon</button>
         </div>
 
-        <div class="bg-white rounded-xl p-6 text-center border-2 border-primary-500 relative">
-          <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-            Most Popular
-          </div>
-          <div class="text-3xl font-bold text-gray-900 mb-2">€25</div>
-          <div class="text-gray-600 text-sm mb-4">Monthly</div>
-          <p class="text-sm text-gray-500 mb-4">Help us expand our reach across Europe.</p>
+        <div class="border-2 border-ink-950 p-6">
+          <p class="text-2xl font-bold mb-1">€25</p>
+          <p class="text-sm text-ink-500 mb-4">Monthly</p>
+          <p class="text-sm text-ink-600 mb-4">Help us expand our reach across Europe.</p>
           <button class="btn btn-primary w-full" disabled>Coming Soon</button>
         </div>
 
-        <div class="bg-white rounded-xl p-6 text-center border-2 border-gray-200 hover:border-primary-500 transition-colors">
-          <div class="text-3xl font-bold text-gray-900 mb-2">€100</div>
-          <div class="text-gray-600 text-sm mb-4">One-time</div>
-          <p class="text-sm text-gray-500 mb-4">Make an immediate impact.</p>
+        <div class="border border-ink-200 p-6">
+          <p class="text-2xl font-bold mb-1">€100</p>
+          <p class="text-sm text-ink-500 mb-4">One-time</p>
+          <p class="text-sm text-ink-600 mb-4">Make an immediate impact.</p>
           <button class="btn btn-secondary w-full" disabled>Coming Soon</button>
         </div>
       </div>
 
-      <p class="text-center text-sm text-gray-500 mt-8">
+      <p class="text-sm text-ink-500 mt-6">
         Donation processing coming soon. We're setting up our payment infrastructure to ensure compliance with Dutch nonprofit requirements.
       </p>
     </div>
   </section>
 
   <!-- Share -->
-  <section id="share" class="section bg-white">
+  <section id="share" class="section border-b border-ink-200">
     <div class="container-narrow">
-      <div class="text-center mb-8">
-        <h2 class="text-3xl font-bold mb-4">Spread the Word</h2>
-        <p class="text-gray-600 max-w-xl mx-auto">
+      <div class="mb-8">
+        <h2 class="text-display-sm mb-4">Spread the Word</h2>
+        <p class="text-ink-600">
           The message spreads when you spread it. Share our content, talk to friends, post on social media.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-        <a href="https://twitter.com/intent/tweet?text=Europe%20must%20build%20again.%20Not%20left.%20Not%20right.%20Forward.%20%40PowerEurope%20https%3A%2F%2Fpowereurope.eu" target="_blank" rel="noopener" class="flex items-center gap-4 p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
-          <div class="p-3 bg-black rounded-lg">
-            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="https://twitter.com/intent/tweet?text=Europe%20must%20build%20again.%20Not%20left.%20Not%20right.%20Forward.%20%40PowerEurope%20https%3A%2F%2Fpowereurope.eu" target="_blank" rel="noopener" class="flex items-center gap-4 p-4 border border-ink-200 hover:border-ink-950 transition-colors">
+          <div class="p-2 bg-ink-950 text-white">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
             </svg>
           </div>
           <div>
-            <div class="font-semibold">Share on X/Twitter</div>
-            <div class="text-sm text-gray-500">Reach the policy conversation</div>
+            <p class="font-semibold text-sm">Share on X</p>
+            <p class="text-sm text-ink-500">Reach the policy conversation</p>
           </div>
         </a>
 
-        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://powereurope.eu" target="_blank" rel="noopener" class="flex items-center gap-4 p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
-          <div class="p-3 bg-blue-700 rounded-lg">
-            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://powereurope.eu" target="_blank" rel="noopener" class="flex items-center gap-4 p-4 border border-ink-200 hover:border-ink-950 transition-colors">
+          <div class="p-2 bg-ink-600 text-white">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
             </svg>
           </div>
           <div>
-            <div class="font-semibold">Share on LinkedIn</div>
-            <div class="text-sm text-gray-500">Reach the business community</div>
+            <p class="font-semibold text-sm">Share on LinkedIn</p>
+            <p class="text-sm text-ink-500">Reach the business community</p>
           </div>
         </a>
       </div>
 
-      <div class="mt-8 p-6 bg-primary-50 rounded-xl text-center">
-        <h3 class="font-semibold mb-2">Contact Your Representatives</h3>
-        <p class="text-sm text-gray-600 mb-4">
+      <div class="mt-8 border-l-2 border-ink-950 pl-5">
+        <p class="font-semibold mb-2">Contact Your Representatives</p>
+        <p class="text-sm text-ink-600 mb-3">
           Demand they take a position on energy sovereignty. Ask them: "What is your plan for European energy independence?"
         </p>
-        <a href="https://www.europarl.europa.eu/meps/en/home" target="_blank" rel="noopener" class="text-primary-700 hover:underline text-sm font-medium">
+        <a href="https://www.europarl.europa.eu/meps/en/home" target="_blank" rel="noopener" class="text-sm font-medium underline underline-offset-4">
           Find your MEP →
         </a>
       </div>
@@ -120,14 +118,14 @@ import EmailSignup from '../components/EmailSignup.astro';
   </section>
 
   <!-- Take action -->
-  <section class="section bg-gray-900 text-white">
-    <div class="container-narrow text-center">
-      <h2 class="text-3xl font-bold mb-6">Ready to Build?</h2>
-      <p class="text-gray-300 mb-8 max-w-xl mx-auto">
+  <section class="section bg-ink-950 text-white">
+    <div class="container-narrow">
+      <h2 class="text-display-sm text-white mb-4">Ready to Build?</h2>
+      <p class="text-ink-300 mb-8 max-w-xl">
         If you're an engineer, investor, policy expert, or entrepreneur—Europe needs you building, not leaving.
         Get in touch to discuss how you can contribute.
       </p>
-      <a href="mailto:build@powereurope.eu" class="btn btn-accent">
+      <a href="mailto:build@powereurope.eu" class="btn btn-primary bg-white text-ink-950 hover:bg-ink-100">
         Get in Touch
       </a>
     </div>

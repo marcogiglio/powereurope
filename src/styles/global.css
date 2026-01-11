@@ -10,205 +10,155 @@
   }
 
   body {
-    @apply text-slate-800 bg-white;
+    @apply text-ink-900 bg-white;
     font-feature-settings: "kern" 1, "liga" 1;
   }
 
-  /* Sharp, editorial typography */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display text-slate-900;
+    @apply font-sans text-ink-950;
     text-wrap: balance;
   }
 
-  h1 {
-    @apply text-display-lg md:text-display-xl;
-  }
+  h1 { @apply text-display-lg md:text-display-xl; }
+  h2 { @apply text-display-md md:text-display-lg; }
+  h3 { @apply text-display-sm md:text-display-md; }
 
-  h2 {
-    @apply text-display-md md:text-display-lg;
-  }
-
-  h3 {
-    @apply text-display-sm md:text-display-md;
-  }
-
-  /* Prose styling - cleaner, more readable */
+  /* Prose - clean, readable */
   .prose {
-    @apply text-slate-700 leading-7;
+    @apply text-ink-800 leading-7;
+    max-width: 65ch;
   }
 
-  .prose p {
-    @apply mb-5;
-  }
+  .prose p { @apply mb-5; }
 
   .prose h2 {
-    @apply text-2xl font-bold mt-14 mb-4 text-slate-900;
+    @apply text-xl font-bold mt-12 mb-4 text-ink-950;
   }
 
   .prose h3 {
-    @apply text-xl font-semibold mt-10 mb-3 text-slate-900;
+    @apply text-lg font-semibold mt-8 mb-3 text-ink-950;
   }
 
   .prose ul, .prose ol {
     @apply mb-5 pl-5;
   }
 
-  .prose li {
-    @apply mb-1.5;
-  }
+  .prose li { @apply mb-1.5; }
 
   .prose blockquote {
-    @apply border-l-2 border-navy-800 pl-5 italic text-slate-600 my-6;
+    @apply border-l-2 border-ink-300 pl-5 text-ink-600 my-6;
   }
 
   .prose a {
-    @apply text-navy-700 underline decoration-navy-300 underline-offset-2 hover:decoration-navy-700 transition-colors;
+    @apply text-ink-950 underline underline-offset-2 decoration-ink-300 hover:decoration-ink-900;
   }
 
   .prose strong {
-    @apply font-semibold text-slate-900;
+    @apply font-semibold text-ink-950;
   }
 
   .prose table {
-    @apply w-full text-sm my-6;
+    @apply w-full text-sm my-8;
   }
 
   .prose th {
-    @apply text-left font-semibold text-slate-900 border-b border-slate-300 pb-2;
+    @apply text-left font-semibold text-ink-950 border-b-2 border-ink-950 pb-2 pr-4;
   }
 
   .prose td {
-    @apply border-b border-slate-100 py-2.5;
+    @apply border-b border-ink-200 py-3 pr-4 align-top;
+  }
+
+  .prose figure {
+    @apply my-8;
+  }
+
+  .prose figcaption {
+    @apply text-sm text-ink-500 mt-2;
   }
 }
 
 @layer components {
-  /* Buttons - cleaner, sharper */
+  /* Minimal buttons */
   .btn {
-    @apply inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold rounded transition-all duration-150;
+    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium transition-colors;
   }
 
   .btn-primary {
-    @apply bg-navy-900 text-white hover:bg-navy-800 active:bg-navy-950;
+    @apply bg-ink-950 text-white hover:bg-ink-800;
   }
 
   .btn-secondary {
-    @apply bg-slate-100 text-slate-900 hover:bg-slate-200 active:bg-slate-300;
+    @apply border border-ink-300 text-ink-900 hover:border-ink-900;
   }
 
-  .btn-accent {
-    @apply bg-gold-500 text-slate-900 hover:bg-gold-400 active:bg-gold-600;
-  }
-
-  .btn-outline {
-    @apply border border-slate-300 text-slate-700 hover:border-slate-400 hover:bg-slate-50;
-  }
-
-  /* Layout utilities */
+  /* Layout */
   .section {
-    @apply py-16 md:py-24;
-  }
-
-  .section-lg {
-    @apply py-20 md:py-32;
+    @apply py-16 md:py-20;
   }
 
   .container-narrow {
-    @apply max-w-3xl mx-auto px-5 sm:px-6;
+    @apply max-w-2xl mx-auto px-5;
   }
 
   .container-wide {
-    @apply max-w-6xl mx-auto px-5 sm:px-6;
+    @apply max-w-5xl mx-auto px-5;
   }
 
-  .container-full {
-    @apply max-w-7xl mx-auto px-5 sm:px-6;
-  }
-
-  /* Data visualization - FT/professional style */
+  /* Data elements - minimal */
   .chart-container {
-    @apply bg-slate-50 rounded p-5 border border-slate-200;
+    @apply border border-ink-200 p-5 my-8;
   }
 
-  .data-card {
-    @apply bg-white rounded border border-slate-200 p-5;
+  .data-table {
+    @apply w-full text-sm;
   }
 
-  .data-card:hover {
-    @apply border-slate-300;
+  .data-table th {
+    @apply text-left font-semibold text-ink-950 border-b-2 border-ink-950 pb-2;
   }
 
-  /* Stat display */
+  .data-table td {
+    @apply border-b border-ink-100 py-3;
+  }
+
+  .data-table tr:hover td {
+    @apply bg-paper-50;
+  }
+
+  /* Stats */
+  .stat {
+    @apply border-t-2 border-ink-950 pt-3;
+  }
+
   .stat-value {
-    @apply text-3xl md:text-4xl font-bold text-slate-900 tabular-nums tracking-tight;
+    @apply text-3xl font-bold text-ink-950 tabular-nums;
   }
 
   .stat-label {
-    @apply text-sm text-slate-600 mt-1;
+    @apply text-sm text-ink-600 mt-1;
   }
 
-  .stat-change {
-    @apply text-xs font-medium mt-2;
+  /* Callouts - minimal */
+  .callout {
+    @apply border-l-2 border-ink-950 pl-5 py-1 my-6;
   }
 
-  .stat-change-up {
-    @apply text-red-600;
+  .callout-warning {
+    @apply border-l-2 border-accent-500 pl-5 py-1 my-6 bg-amber-50/50;
   }
 
-  .stat-change-down {
-    @apply text-emerald-600;
-  }
-
-  /* Card styles */
-  .card {
-    @apply bg-white border border-slate-200 rounded p-6;
-  }
-
-  .card-dark {
-    @apply bg-navy-900 text-white border-0 rounded p-6;
-  }
-
-  /* Labels and tags */
+  /* Labels */
   .label {
-    @apply text-xs font-semibold uppercase tracking-wide;
-  }
-
-  .tag {
-    @apply text-xs font-medium px-2 py-0.5 rounded-sm;
-  }
-
-  .tag-navy {
-    @apply bg-navy-100 text-navy-800;
-  }
-
-  .tag-gold {
-    @apply bg-gold-100 text-gold-800;
+    @apply text-xs font-medium uppercase tracking-wider text-ink-500;
   }
 
   /* Dividers */
   .divider {
-    @apply border-t border-slate-200;
+    @apply border-t border-ink-200 my-8;
   }
 
-  .divider-dark {
-    @apply border-t border-slate-700;
+  .divider-heavy {
+    @apply border-t-2 border-ink-950 my-8;
   }
-}
-
-/* Custom scrollbar for webkit browsers */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  @apply bg-slate-100;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-slate-300 rounded;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-slate-400;
 }

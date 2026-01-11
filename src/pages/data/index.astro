@@ -1,175 +1,113 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import StatCard from '../../components/StatCard.astro';
 ---
 
-<BaseLayout title="Data & Dashboards | PowerEurope" description="Evidence-based data on European energy costs, nuclear capacity, and AI compute economics.">
+<BaseLayout title="Data | PowerEurope" description="Evidence-based data on European energy costs, nuclear capacity, and industrial competitiveness.">
   <section class="section">
     <div class="container-wide">
-      <header class="mb-12">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Data & Dashboards</h1>
-        <p class="text-xl text-gray-600 max-w-3xl">
-          We believe in evidence-based advocacy. All our data is sourced from reputable institutions,
-          and our analysis is transparent and reproducible.
+      <header class="mb-12 border-b border-ink-200 pb-8">
+        <p class="label mb-4">Evidence</p>
+        <h1 class="mb-4">Data</h1>
+        <p class="text-xl text-ink-600 max-w-2xl">
+          We believe in evidence-based advocacy. All data is sourced from reputable institutions. Our analysis is transparent and reproducible.
         </p>
       </header>
 
       <!-- Key metrics -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-        <StatCard
-          value="2.5x"
-          label="EU vs US industrial electricity price ratio"
-          change="+15% since 2020"
-          changeDirection="up"
-          source="Eurostat, EIA"
-        />
-        <StatCard
-          value="€145"
-          label="EU average industrial price (€/MWh)"
-          change="+52% since 2019"
-          changeDirection="up"
-          source="Eurostat 2024"
-        />
-        <StatCard
-          value="103 GW"
-          label="EU installed nuclear capacity"
-          change="-12 GW since 2010"
-          changeDirection="down"
-          source="IAEA PRIS"
-        />
-        <StatCard
-          value="$100M+"
-          label="Cost to train frontier AI model"
-          change="Doubling yearly"
-          changeDirection="up"
-          source="Epoch AI"
-        />
+      <div class="grid md:grid-cols-4 gap-6 mb-16">
+        <div class="stat">
+          <p class="stat-value">2.5×</p>
+          <p class="stat-label">EU vs US industrial electricity price ratio</p>
+          <p class="text-xs text-ink-400 mt-2">Eurostat, EIA</p>
+        </div>
+        <div class="stat">
+          <p class="stat-value">€145</p>
+          <p class="stat-label">EU average industrial price (€/MWh)</p>
+          <p class="text-xs text-ink-400 mt-2">Eurostat 2024</p>
+        </div>
+        <div class="stat">
+          <p class="stat-value">103 GW</p>
+          <p class="stat-label">EU installed nuclear capacity</p>
+          <p class="text-xs text-ink-400 mt-2">IAEA PRIS</p>
+        </div>
+        <div class="stat">
+          <p class="stat-value">-12 GW</p>
+          <p class="stat-label">Nuclear capacity lost since 2010</p>
+          <p class="text-xs text-ink-400 mt-2">IAEA PRIS</p>
+        </div>
       </div>
 
       <!-- Dashboard cards -->
+      <h2 class="text-display-sm mb-6">Dashboards</h2>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <a href="/data/energy-prices" class="data-card group hover:shadow-lg transition-shadow">
-          <div class="flex items-start justify-between mb-4">
-            <div class="p-3 bg-primary-100 rounded-lg">
-              <svg class="w-6 h-6 text-primary-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
-              </svg>
-            </div>
-            <span class="text-sm text-gray-500">Updated Dec 2024</span>
-          </div>
-          <h3 class="text-xl font-bold mb-2 group-hover:text-primary-700 transition-colors">
-            Energy Price Tracker
-          </h3>
-          <p class="text-gray-600 text-sm">
+        <a href="/data/energy-prices" class="border border-ink-200 p-6 hover:border-ink-950 transition-colors">
+          <p class="text-sm text-ink-500 mb-2">Updated Dec 2024</p>
+          <h3 class="text-lg font-bold mb-2">Energy Price Tracker</h3>
+          <p class="text-ink-600 text-sm">
             Industrial electricity prices across EU, US, and China from 2008 to present with projections.
           </p>
         </a>
 
-        <a href="/data/nuclear-capacity" class="data-card group hover:shadow-lg transition-shadow">
-          <div class="flex items-start justify-between mb-4">
-            <div class="p-3 bg-emerald-100 rounded-lg">
-              <svg class="w-6 h-6 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
-              </svg>
-            </div>
-            <span class="text-sm text-gray-500">Updated Nov 2024</span>
-          </div>
-          <h3 class="text-xl font-bold mb-2 group-hover:text-emerald-700 transition-colors">
-            Nuclear Capacity Map
-          </h3>
-          <p class="text-gray-600 text-sm">
+        <a href="/data/nuclear-capacity" class="border border-ink-200 p-6 hover:border-ink-950 transition-colors">
+          <p class="text-sm text-ink-500 mb-2">Updated Nov 2024</p>
+          <h3 class="text-lg font-bold mb-2">Nuclear Capacity Map</h3>
+          <p class="text-ink-600 text-sm">
             Current and planned nuclear capacity across Europe. Track closures, extensions, and new builds.
           </p>
         </a>
 
-        <a href="/data/ai-compute" class="data-card group hover:shadow-lg transition-shadow">
-          <div class="flex items-start justify-between mb-4">
-            <div class="p-3 bg-amber-100 rounded-lg">
-              <svg class="w-6 h-6 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-              </svg>
-            </div>
-            <span class="text-sm text-gray-500">Updated Oct 2024</span>
-          </div>
-          <h3 class="text-xl font-bold mb-2 group-hover:text-amber-700 transition-colors">
-            AI Compute Economics
-          </h3>
-          <p class="text-gray-600 text-sm">
+        <a href="/data/ai-compute" class="border border-ink-200 p-6 hover:border-ink-950 transition-colors">
+          <p class="text-sm text-ink-500 mb-2">Updated Oct 2024</p>
+          <h3 class="text-lg font-bold mb-2">AI Compute Economics</h3>
+          <p class="text-ink-600 text-sm">
             Training costs for frontier AI models and energy as a percentage of total compute cost.
           </p>
         </a>
 
-        <div class="data-card bg-gray-50 border-dashed">
-          <div class="flex items-start justify-between mb-4">
-            <div class="p-3 bg-gray-200 rounded-lg">
-              <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
-              </svg>
-            </div>
-            <span class="text-sm text-gray-400">Coming soon</span>
-          </div>
-          <h3 class="text-xl font-bold mb-2 text-gray-500">
-            Grid Infrastructure
-          </h3>
-          <p class="text-gray-500 text-sm">
+        <div class="border border-ink-200 border-dashed p-6 opacity-60">
+          <p class="text-sm text-ink-400 mb-2">Coming soon</p>
+          <h3 class="text-lg font-bold mb-2 text-ink-500">Grid Infrastructure</h3>
+          <p class="text-ink-500 text-sm">
             Transmission capacity, interconnectors, and bottlenecks in the European grid.
           </p>
         </div>
 
-        <div class="data-card bg-gray-50 border-dashed">
-          <div class="flex items-start justify-between mb-4">
-            <div class="p-3 bg-gray-200 rounded-lg">
-              <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
-              </svg>
-            </div>
-            <span class="text-sm text-gray-400">Coming soon</span>
-          </div>
-          <h3 class="text-xl font-bold mb-2 text-gray-500">
-            Industrial Migration
-          </h3>
-          <p class="text-gray-500 text-sm">
+        <div class="border border-ink-200 border-dashed p-6 opacity-60">
+          <p class="text-sm text-ink-400 mb-2">Coming soon</p>
+          <h3 class="text-lg font-bold mb-2 text-ink-500">Industrial Migration</h3>
+          <p class="text-ink-500 text-sm">
             Tracking energy-intensive industries leaving Europe for cheaper energy markets.
           </p>
         </div>
 
-        <div class="data-card bg-gray-50 border-dashed">
-          <div class="flex items-start justify-between mb-4">
-            <div class="p-3 bg-gray-200 rounded-lg">
-              <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
-              </svg>
-            </div>
-            <span class="text-sm text-gray-400">Coming soon</span>
-          </div>
-          <h3 class="text-xl font-bold mb-2 text-gray-500">
-            Policy Tracker
-          </h3>
-          <p class="text-gray-500 text-sm">
+        <div class="border border-ink-200 border-dashed p-6 opacity-60">
+          <p class="text-sm text-ink-400 mb-2">Coming soon</p>
+          <h3 class="text-lg font-bold mb-2 text-ink-500">Policy Tracker</h3>
+          <p class="text-ink-500 text-sm">
             Monitor energy policy developments across EU member states.
           </p>
         </div>
       </div>
 
       <!-- Data principles -->
-      <div class="mt-16 p-8 bg-gray-50 rounded-xl">
-        <h2 class="text-2xl font-bold mb-6">Our Data Principles</h2>
-        <div class="grid md:grid-cols-3 gap-6">
+      <div class="mt-16 border-t border-ink-200 pt-8">
+        <h2 class="text-display-sm mb-6">Our Data Principles</h2>
+        <div class="grid md:grid-cols-3 gap-8">
           <div>
-            <h3 class="font-semibold mb-2">Transparent Sources</h3>
-            <p class="text-sm text-gray-600">
+            <p class="font-semibold mb-2">Transparent Sources</p>
+            <p class="text-sm text-ink-600">
               Every chart links to its source data. We use official statistics from Eurostat, IEA, EIA, and IAEA.
             </p>
           </div>
           <div>
-            <h3 class="font-semibold mb-2">Reproducible Analysis</h3>
-            <p class="text-sm text-gray-600">
+            <p class="font-semibold mb-2">Reproducible Analysis</p>
+            <p class="text-sm text-ink-600">
               Our methodology is documented. Raw data is downloadable. Anyone can verify our claims.
             </p>
           </div>
           <div>
-            <h3 class="font-semibold mb-2">Regular Updates</h3>
-            <p class="text-sm text-gray-600">
+            <p class="font-semibold mb-2">Regular Updates</p>
+            <p class="text-sm text-ink-600">
               Dashboards are updated monthly as new data becomes available. Historical revisions are tracked.
             </p>
           </div>

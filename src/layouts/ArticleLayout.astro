@@ -8,14 +8,12 @@ interface Props {
     publishDate: string;
     author?: string;
     category: 'opinion' | 'research';
-    tags?: string[];
   };
   title?: string;
   description?: string;
   publishDate?: Date | string;
   author?: string;
   category?: 'opinion' | 'research';
-  tags?: string[];
 }
 
 // Support both direct props and MDX frontmatter object
@@ -26,7 +24,6 @@ const {
   publishDate: rawDate,
   author = 'PowerEurope',
   category = 'research',
-  tags = []
 } = props;
 
 // Handle both Date objects and date strings from MDX frontmatter
@@ -41,58 +38,42 @@ const formattedDate = publishDate.toLocaleDateString('en-GB', {
 const dateIso = rawDate instanceof Date ? rawDate.toISOString() : String(rawDate);
 
 const categoryLabel = category === 'opinion' ? 'Opinion' : 'Research';
-const categoryColor = category === 'opinion' ? 'text-accent-600 bg-accent-50' : 'text-primary-600 bg-primary-50';
 ---
 
 <BaseLayout title={`${title} | PowerEurope`} description={description}>
   <article class="section">
     <div class="container-narrow">
       <!-- Header -->
-      <header class="mb-12">
+      <header class="mb-12 border-b border-ink-200 pb-8">
         <div class="flex items-center gap-3 mb-4">
-          <span class={`text-xs font-semibold px-2 py-1 rounded ${categoryColor}`}>
-            {categoryLabel}
-          </span>
-          <time datetime={dateIso} class="text-sm text-gray-500">
+          <span class="label">{categoryLabel}</span>
+          <span class="text-ink-300">·</span>
+          <time datetime={dateIso} class="text-sm text-ink-500">
             {formattedDate}
           </time>
         </div>
 
-        <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-          {title}
-        </h1>
+        <h1 class="mb-6">{title}</h1>
 
-        <p class="text-xl text-gray-600 leading-relaxed">
+        <p class="text-xl text-ink-600 leading-relaxed">
           {description}
         </p>
 
-        <div class="mt-6 pt-6 border-t border-gray-200 flex items-center justify-between">
-          <div class="text-sm text-gray-500">
-            By <span class="font-medium text-gray-900">{author}</span>
-          </div>
-
-          {tags.length > 0 && (
-            <div class="flex gap-2">
-              {tags.map((tag) => (
-                <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
+        <div class="mt-6 text-sm text-ink-500">
+          By <span class="font-medium text-ink-900">{author}</span>
         </div>
       </header>
 
       <!-- Content -->
-      <div class="prose max-w-none">
+      <div class="prose">
         <slot />
       </div>
 
       <!-- Footer -->
-      <footer class="mt-16 pt-8 border-t border-gray-200">
-        <div class="bg-primary-50 rounded-xl p-8 text-center">
-          <h3 class="text-xl font-bold mb-2">Join the Movement</h3>
-          <p class="text-gray-600 mb-4">
+      <footer class="mt-16 pt-8 border-t border-ink-200">
+        <div class="border-l-2 border-ink-950 pl-5">
+          <p class="font-semibold mb-2">Join the Movement</p>
+          <p class="text-ink-600 text-sm mb-4">
             Help us build a future where Europe has the energy to compete, defend, and thrive.
           </p>
           <a href="/join" class="btn btn-primary">
