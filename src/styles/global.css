@@ -5,102 +5,210 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    @apply antialiased text-gray-900 bg-white;
+    @apply text-slate-800 bg-white;
+    font-feature-settings: "kern" 1, "liga" 1;
   }
 
-  /* Typography defaults */
+  /* Sharp, editorial typography */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display font-bold tracking-tight;
+    @apply font-display text-slate-900;
+    text-wrap: balance;
   }
 
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl;
+    @apply text-display-lg md:text-display-xl;
   }
 
   h2 {
-    @apply text-3xl md:text-4xl;
+    @apply text-display-md md:text-display-lg;
   }
 
   h3 {
-    @apply text-2xl md:text-3xl;
+    @apply text-display-sm md:text-display-md;
   }
 
-  /* Prose styling for articles */
+  /* Prose styling - cleaner, more readable */
   .prose {
-    @apply text-gray-700 leading-relaxed;
+    @apply text-slate-700 leading-7;
   }
 
   .prose p {
-    @apply mb-6;
+    @apply mb-5;
   }
 
   .prose h2 {
-    @apply text-2xl font-bold mt-12 mb-4 text-gray-900;
+    @apply text-2xl font-bold mt-14 mb-4 text-slate-900;
   }
 
   .prose h3 {
-    @apply text-xl font-bold mt-8 mb-3 text-gray-900;
+    @apply text-xl font-semibold mt-10 mb-3 text-slate-900;
   }
 
   .prose ul, .prose ol {
-    @apply mb-6 pl-6;
+    @apply mb-5 pl-5;
   }
 
   .prose li {
-    @apply mb-2;
+    @apply mb-1.5;
   }
 
   .prose blockquote {
-    @apply border-l-4 border-primary-500 pl-6 italic text-gray-600 my-6;
+    @apply border-l-2 border-navy-800 pl-5 italic text-slate-600 my-6;
   }
 
   .prose a {
-    @apply text-primary-700 underline hover:text-primary-900;
+    @apply text-navy-700 underline decoration-navy-300 underline-offset-2 hover:decoration-navy-700 transition-colors;
   }
 
   .prose strong {
-    @apply font-semibold text-gray-900;
+    @apply font-semibold text-slate-900;
+  }
+
+  .prose table {
+    @apply w-full text-sm my-6;
+  }
+
+  .prose th {
+    @apply text-left font-semibold text-slate-900 border-b border-slate-300 pb-2;
+  }
+
+  .prose td {
+    @apply border-b border-slate-100 py-2.5;
   }
 }
 
 @layer components {
+  /* Buttons - cleaner, sharper */
   .btn {
-    @apply inline-flex items-center justify-center px-6 py-3 font-semibold rounded-lg transition-colors duration-200;
+    @apply inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold rounded transition-all duration-150;
   }
 
   .btn-primary {
-    @apply bg-primary-700 text-white hover:bg-primary-800;
+    @apply bg-navy-900 text-white hover:bg-navy-800 active:bg-navy-950;
   }
 
   .btn-secondary {
-    @apply bg-gray-100 text-gray-900 hover:bg-gray-200;
+    @apply bg-slate-100 text-slate-900 hover:bg-slate-200 active:bg-slate-300;
   }
 
   .btn-accent {
-    @apply bg-accent-500 text-white hover:bg-accent-600;
+    @apply bg-gold-500 text-slate-900 hover:bg-gold-400 active:bg-gold-600;
   }
 
+  .btn-outline {
+    @apply border border-slate-300 text-slate-700 hover:border-slate-400 hover:bg-slate-50;
+  }
+
+  /* Layout utilities */
   .section {
     @apply py-16 md:py-24;
   }
 
+  .section-lg {
+    @apply py-20 md:py-32;
+  }
+
   .container-narrow {
-    @apply max-w-3xl mx-auto px-4 sm:px-6;
+    @apply max-w-3xl mx-auto px-5 sm:px-6;
   }
 
   .container-wide {
-    @apply max-w-6xl mx-auto px-4 sm:px-6;
+    @apply max-w-6xl mx-auto px-5 sm:px-6;
   }
 
-  /* Data visualization containers */
+  .container-full {
+    @apply max-w-7xl mx-auto px-5 sm:px-6;
+  }
+
+  /* Data visualization - FT/professional style */
   .chart-container {
-    @apply bg-gray-50 rounded-xl p-6 border border-gray-200;
+    @apply bg-slate-50 rounded p-5 border border-slate-200;
   }
 
   .data-card {
-    @apply bg-white rounded-xl shadow-sm border border-gray-200 p-6;
+    @apply bg-white rounded border border-slate-200 p-5;
   }
+
+  .data-card:hover {
+    @apply border-slate-300;
+  }
+
+  /* Stat display */
+  .stat-value {
+    @apply text-3xl md:text-4xl font-bold text-slate-900 tabular-nums tracking-tight;
+  }
+
+  .stat-label {
+    @apply text-sm text-slate-600 mt-1;
+  }
+
+  .stat-change {
+    @apply text-xs font-medium mt-2;
+  }
+
+  .stat-change-up {
+    @apply text-red-600;
+  }
+
+  .stat-change-down {
+    @apply text-emerald-600;
+  }
+
+  /* Card styles */
+  .card {
+    @apply bg-white border border-slate-200 rounded p-6;
+  }
+
+  .card-dark {
+    @apply bg-navy-900 text-white border-0 rounded p-6;
+  }
+
+  /* Labels and tags */
+  .label {
+    @apply text-xs font-semibold uppercase tracking-wide;
+  }
+
+  .tag {
+    @apply text-xs font-medium px-2 py-0.5 rounded-sm;
+  }
+
+  .tag-navy {
+    @apply bg-navy-100 text-navy-800;
+  }
+
+  .tag-gold {
+    @apply bg-gold-100 text-gold-800;
+  }
+
+  /* Dividers */
+  .divider {
+    @apply border-t border-slate-200;
+  }
+
+  .divider-dark {
+    @apply border-t border-slate-700;
+  }
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-400;
 }

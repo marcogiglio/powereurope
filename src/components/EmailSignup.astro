@@ -18,14 +18,13 @@ const isCompact = variant === 'compact';
 <div class:list={[
   'email-signup',
   isHero && 'text-center',
-  !isCompact && 'py-8',
 ]}>
-  {!isCompact && (
-    <div class="mb-6">
-      <h3 class:list={['font-bold', isHero ? 'text-2xl md:text-3xl' : 'text-xl']}>
+  {!isCompact && heading && (
+    <div class="mb-5">
+      <h3 class:list={['font-semibold text-slate-900', isHero ? 'text-xl' : 'text-lg']}>
         {heading}
       </h3>
-      <p class="text-gray-600 mt-2">{subheading}</p>
+      {subheading && <p class="text-slate-600 mt-1 text-sm">{subheading}</p>}
     </div>
   )}
 
@@ -33,8 +32,8 @@ const isCompact = variant === 'compact';
     action="/api/subscribe"
     method="POST"
     class:list={[
-      'flex gap-3',
-      isHero ? 'flex-col sm:flex-row justify-center max-w-md mx-auto' : 'flex-col sm:flex-row',
+      'flex gap-2',
+      isHero ? 'flex-col sm:flex-row justify-center max-w-lg mx-auto' : 'flex-col sm:flex-row',
     ]}
   >
     <div class="flex-1">
@@ -45,14 +44,14 @@ const isCompact = variant === 'compact';
         name="email"
         required
         placeholder="your@email.com"
-        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-shadow"
+        class="w-full px-3 py-2.5 text-sm rounded border border-slate-300 focus:ring-2 focus:ring-navy-500 focus:border-navy-500 outline-none transition-shadow"
       />
     </div>
 
-    <div class:list={[!isCompact && 'sm:flex-shrink-0']}>
+    <div class:list={[!isCompact && 'sm:w-auto']}>
       <select
         name="country"
-        class="w-full sm:w-auto px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none bg-white"
+        class="w-full sm:w-auto px-3 py-2.5 text-sm rounded border border-slate-300 focus:ring-2 focus:ring-navy-500 focus:border-navy-500 outline-none bg-white"
       >
         <option value="">Country</option>
         <option value="AT">Austria</option>
@@ -86,12 +85,12 @@ const isCompact = variant === 'compact';
       </select>
     </div>
 
-    <button type="submit" class="btn btn-primary whitespace-nowrap">
-      Join the Movement
+    <button type="submit" class="btn btn-primary whitespace-nowrap px-5">
+      Subscribe
     </button>
   </form>
 
-  <p class="text-xs text-gray-500 mt-3">
-    No spam. Unsubscribe anytime. We respect your privacy.
+  <p class="text-xs text-slate-500 mt-3">
+    No spam. Unsubscribe anytime.
   </p>
 </div>
