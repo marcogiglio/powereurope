@@ -1,12 +1,6 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import ScrollySection from '../../components/ScrollySection.astro';
+import ScrollySection from '../ScrollySection.astro';
 ---
-
-<BaseLayout
-  title="The Retreat of Liberal Democracy | PowerEurope"
-  description="How authoritarian regimes have gained economic and political ground over three decades while democracies faltered."
->
   <!-- Hero -->
   <header class="py-20 md:py-32 border-b border-ink-200">
     <div class="container-narrow">
@@ -294,10 +288,9 @@ import ScrollySection from '../../components/ScrollySection.astro';
       </ul>
     </div>
   </section>
-</BaseLayout>
-
 <script>
   import * as Plot from '@observablehq/plot';
+  import { createResponsiveChart } from '../../lib/charts';
 
   // GDP Share data
   const gdpData = [
@@ -330,17 +323,12 @@ import ScrollySection from '../../components/ScrollySection.astro';
   let currentGdpYear = 1990;
   let currentEuYear = 1990;
 
-  function renderGdpChart(highlightYear: number = 2024) {
-    const container = document.getElementById('gdp-chart');
-    if (!container) return;
-
-    container.innerHTML = '';
-
+  function renderGdpChart(width: number, highlightYear: number = 2024) {
     // Filter data up to highlight year
     const visibleData = gdpData.filter(d => d.year <= highlightYear);
 
-    const chart = Plot.plot({
-      width: container.clientWidth,
+    return Plot.plot({
+      width,
       height: 350,
       marginLeft: 50,
       marginRight: 20,
@@ -387,20 +375,14 @@ import ScrollySection from '../../components/ScrollySection.astro';
       ],
     });
 
-    container.appendChild(chart);
   }
 
-  function renderEuChart(highlightYear: number = 2030) {
-    const container = document.getElementById('europe-chart');
-    if (!container) return;
-
-    container.innerHTML = '';
-
+  function renderEuChart(width: number, highlightYear: number = 2030) {
     const visibleData = euData.filter(d => d.year <= highlightYear);
     const projectedData = euData.filter(d => d.year > 2024 && d.year <= highlightYear);
 
-    const chart = Plot.plot({
-      width: container.clientWidth,
+    return Plot.plot({
+      width,
       height: 350,
       marginLeft: 50,
       marginRight: 20,
@@ -467,13 +449,19 @@ import ScrollySection from '../../components/ScrollySection.astro';
       ],
     });
 
-    container.appendChild(chart);
   }
 
   // Initialize charts
   document.addEventListener('DOMContentLoaded', () => {
-    renderGdpChart(1990);
-    renderEuChart(1990);
+    const gdpContainer = document.getElementById('gdp-chart');
+    const gdpChart = gdpContainer
+      ? createResponsiveChart(gdpContainer, (width) => renderGdpChart(width, currentGdpYear))
+      : null;
+
+    const euContainer = document.getElementById('europe-chart');
+    const euChart = euContainer
+      ? createResponsiveChart(euContainer, (width) => renderEuChart(width, currentEuYear))
+      : null;
 
     // Listen for scroll events on GDP section
     const gdpScrolly = document.getElementById('gdp-scrolly');
@@ -483,7 +471,7 @@ import ScrollySection from '../../components/ScrollySection.astro';
         const year = parseInt(step.dataset.year || '1990');
         if (year !== currentGdpYear) {
           currentGdpYear = year;
-          renderGdpChart(year);
+          gdpChart?.render();
         }
       }) as EventListener);
     }
@@ -496,19 +484,9 @@ import ScrollySection from '../../components/ScrollySection.astro';
         const year = parseInt(step.dataset.euYear || '1990');
         if (year !== currentEuYear) {
           currentEuYear = year;
-          renderEuChart(year);
+          euChart?.render();
         }
       }) as EventListener);
     }
-  });
-
-  // Handle resize
-  let resizeTimeout: ReturnType<typeof setTimeout>;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-      renderGdpChart(currentGdpYear);
-      renderEuChart(currentEuYear);
-    }, 250);
   });
 </script>

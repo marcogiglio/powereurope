@@ -1,43 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
 
-const articles = [
-  {
-    slug: 'fission',
-    title: 'Cutting-Edge Fission Reactor Technologies',
-    description: 'A comprehensive analysis of Generation III/III+ reactors, SMRs, and advanced designs—their economics, safety, and fuel cycles.',
-    date: new Date('2026-01-11'),
-    readTime: '30 min read',
-  },
-  {
-    slug: 'coal-gas',
-    title: 'Coal vs Natural Gas: EU Transitional Strategy',
-    description: 'Comparing coal and natural gas as transitional energy sources for Europe—costs, scalability, security, and emissions.',
-    date: new Date('2026-01-11'),
-    readTime: '25 min read',
-  },
-  {
-    slug: 'democracy-decline',
-    title: 'The Retreat of Liberal Democracy',
-    description: 'How authoritarian regimes have gained economic and political ground over three decades while democracies faltered—and what energy has to do with it.',
-    date: new Date('2026-01-11'),
-    readTime: '20 min read',
-  },
-  {
-    slug: 'energy-strategy',
-    title: 'A European Energy Strategy',
-    description: 'Why Europe needs coal as a bridge, why renewables alone cannot work, and how nuclear provides the only viable path to energy sovereignty.',
-    date: new Date('2026-01-11'),
-    readTime: '25 min read',
-  },
-  {
-    slug: 'smr-explained',
-    title: 'Small Modular Reactors Explained',
-    description: 'What SMRs are, how they work, and why they matter for European energy independence.',
-    date: new Date('2026-01-08'),
-    readTime: '12 min read',
-  },
-];
+const articles = (await getCollection('research'))
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
 ---
 
 <BaseLayout title="Research | PowerEurope" description="In-depth explainers on energy technology, policy, and economics.">
@@ -54,16 +20,18 @@ const articles = [
       <div class="space-y-8">
         {articles.map((article) => (
           <article class="border-b border-ink-100 pb-8">
-            <time datetime={article.date.toISOString()} class="text-sm text-ink-500 block mb-2">
-              {article.date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
+            <time datetime={article.data.publishDate.toISOString()} class="text-sm text-ink-500 block mb-2">
+              {article.data.publishDate.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
             </time>
             <h2 class="text-xl font-bold mb-2">
               <a href={`/research/${article.slug}`} class="hover:underline">
-                {article.title}
+                {article.data.title}
               </a>
             </h2>
-            <p class="text-ink-600 mb-2">{article.description}</p>
-            <span class="text-sm text-ink-400">{article.readTime}</span>
+            <p class="text-ink-600 mb-2">{article.data.description}</p>
+            {article.data.readTime && (
+              <span class="text-sm text-ink-400">{article.data.readTime}</span>
+            )}
           </article>
         ))}
       </div>

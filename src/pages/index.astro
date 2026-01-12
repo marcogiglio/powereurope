@@ -1,6 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import EmailSignup from '../components/EmailSignup.astro';
+import energyData from '../data/energy-prices.json';
+import { getEnergyPriceStats } from '../lib/energy-prices';
+
+const { latest, ratio } = getEnergyPriceStats(energyData);
+const euPrice = Math.round(latest.europe);
+const usPrice = Math.round(latest.usa);
+const ratioDisplay = `${ratio.toFixed(1)}×`;
+const latestYear = latest.year;
 ---
 
 <BaseLayout title="PowerEurope">
@@ -24,19 +32,19 @@ import EmailSignup from '../components/EmailSignup.astro';
     <div class="container-wide">
       <div class="grid md:grid-cols-3 gap-8">
         <div class="stat">
-          <p class="stat-value">€145</p>
+          <p class="stat-value">€{euPrice}</p>
           <p class="stat-label">EU industrial electricity price per MWh</p>
         </div>
         <div class="stat">
-          <p class="stat-value">$58</p>
+          <p class="stat-value">{`$${usPrice}`}</p>
           <p class="stat-label">US industrial electricity price per MWh</p>
         </div>
         <div class="stat">
-          <p class="stat-value">2.5×</p>
+          <p class="stat-value">{ratioDisplay}</p>
           <p class="stat-label">Europe's cost disadvantage</p>
         </div>
       </div>
-      <p class="text-sm text-ink-500 mt-6">Source: Eurostat, EIA (2024)</p>
+      <p class="text-sm text-ink-500 mt-6">Source: Eurostat, EIA ({latestYear})</p>
     </div>
   </section>
 
@@ -145,39 +153,17 @@ import EmailSignup from '../components/EmailSignup.astro';
 
 <script>
   import * as Plot from '@observablehq/plot';
+  import energyData from '../data/energy-prices.json';
+  import { createResponsiveChart } from '../lib/charts';
+  import { energyPriceColors, getEnergyPriceSeries } from '../lib/energy-prices';
 
-  const data = [
-    { year: 2010, region: 'Europe', price: 95 },
-    { year: 2012, region: 'Europe', price: 105 },
-    { year: 2014, region: 'Europe', price: 112 },
-    { year: 2016, region: 'Europe', price: 98 },
-    { year: 2018, region: 'Europe', price: 110 },
-    { year: 2020, region: 'Europe', price: 95 },
-    { year: 2022, region: 'Europe', price: 180 },
-    { year: 2024, region: 'Europe', price: 145 },
-    { year: 2010, region: 'United States', price: 55 },
-    { year: 2012, region: 'United States', price: 50 },
-    { year: 2014, region: 'United States', price: 52 },
-    { year: 2016, region: 'United States', price: 48 },
-    { year: 2018, region: 'United States', price: 50 },
-    { year: 2020, region: 'United States', price: 45 },
-    { year: 2022, region: 'United States', price: 65 },
-    { year: 2024, region: 'United States', price: 58 },
-    { year: 2010, region: 'China', price: 60 },
-    { year: 2012, region: 'China', price: 62 },
-    { year: 2014, region: 'China', price: 65 },
-    { year: 2016, region: 'China', price: 58 },
-    { year: 2018, region: 'China', price: 60 },
-    { year: 2020, region: 'China', price: 55 },
-    { year: 2022, region: 'China', price: 70 },
-    { year: 2024, region: 'China', price: 62 },
-  ];
+  const data = getEnergyPriceSeries(energyData);
+  const latestYear = energyData.timeSeries[energyData.timeSeries.length - 1].year;
 
   const container = document.getElementById('price-chart');
   if (container) {
-    container.innerHTML = '';
-    const chart = Plot.plot({
-      width: container.clientWidth,
+    createResponsiveChart(container, (width) => Plot.plot({
+      width,
       height: 320,
       marginLeft: 45,
       marginRight: 80,
@@ -198,10 +184,7 @@ import EmailSignup from '../components/EmailSignup.astro';
         domain: [0, 200],
         tickFormat: d => `€${d}`,
       },
-      color: {
-        domain: ['Europe', 'United States', 'China'],
-        range: ['#1a1a1a', '#666666', '#a4a4a4'],
-      },
+      color: energyPriceColors,
       marks: [
         Plot.ruleY([0], { stroke: '#e3e3e3' }),
         Plot.line(data, {
@@ -211,7 +194,7 @@ import EmailSignup from '../components/EmailSignup.astro';
           strokeWidth: d => d.region === 'Europe' ? 2.5 : 1.5,
         }),
         Plot.text(
-          data.filter(d => d.year === 2024),
+          data.filter(d => d.year === latestYear),
           {
             x: 'year',
             y: 'price',
@@ -224,7 +207,6 @@ import EmailSignup from '../components/EmailSignup.astro';
           }
         ),
       ],
-    });
-    container.appendChild(chart);
+    }));
   }
 </script>

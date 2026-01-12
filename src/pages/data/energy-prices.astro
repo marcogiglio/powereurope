@@ -1,9 +1,19 @@
 ---
 import DataLayout from '../../layouts/DataLayout.astro';
 import energyData from '../../data/energy-prices.json';
+import { getEnergyPriceStats } from '../../lib/energy-prices';
 
 const sources = energyData.metadata.sources;
 const lastUpdated = new Date(energyData.metadata.lastUpdated);
+const stats = getEnergyPriceStats(energyData);
+const basePoint = energyData.timeSeries.find((point) => point.year === stats.baseYear) ?? energyData.timeSeries[0];
+
+const formatPercent = (value: number) => `${value >= 0 ? '+' : ''}${Math.round(value)}%`;
+const euChange = formatPercent(stats.changes.europe);
+const usChange = formatPercent(stats.changes.usa);
+const ratioDisplay = stats.ratio.toFixed(1);
+const baseRatio = basePoint?.usa ? basePoint.europe / basePoint.usa : 0;
+const baseRatioDisplay = baseRatio.toFixed(1);
 ---
 
 <DataLayout
@@ -15,22 +25,22 @@ const lastUpdated = new Date(energyData.metadata.lastUpdated);
   <!-- Key stats -->
   <div class="grid md:grid-cols-4 gap-6 mb-12">
     <div class="stat">
-      <p class="stat-value">€145</p>
-      <p class="stat-label">EU Average (2024)</p>
-      <p class="text-xs text-ink-400 mt-2">+52% vs 2019</p>
+      <p class="stat-value">€{Math.round(stats.latest.europe)}</p>
+      <p class="stat-label">EU Average ({stats.latest.year})</p>
+      <p class="text-xs text-ink-400 mt-2">{euChange} vs {stats.baseYear}</p>
     </div>
     <div class="stat">
-      <p class="stat-value">€58</p>
-      <p class="stat-label">US Average (2024)</p>
-      <p class="text-xs text-ink-400 mt-2">+21% vs 2019</p>
+      <p class="stat-value">€{Math.round(stats.latest.usa)}</p>
+      <p class="stat-label">US Average ({stats.latest.year})</p>
+      <p class="text-xs text-ink-400 mt-2">{usChange} vs {stats.baseYear}</p>
     </div>
     <div class="stat">
-      <p class="stat-value">2.5×</p>
+      <p class="stat-value">{ratioDisplay}×</p>
       <p class="stat-label">EU/US Price Ratio</p>
-      <p class="text-xs text-ink-400 mt-2">Up from 2.2× in 2019</p>
+      <p class="text-xs text-ink-400 mt-2">Up from {baseRatioDisplay}× in {stats.baseYear}</p>
     </div>
     <div class="stat">
-      <p class="stat-value">€87</p>
+      <p class="stat-value">€{Math.round(stats.premium)}</p>
       <p class="stat-label">EU Premium vs US</p>
       <p class="text-xs text-ink-400 mt-2">Per MWh</p>
     </div>
@@ -38,7 +48,7 @@ const lastUpdated = new Date(energyData.metadata.lastUpdated);
 
   <!-- Main comparison chart -->
   <div class="mb-12">
-    <h2 class="text-display-sm mb-4">Price Comparison: Europe vs. US vs. China (2008-2024)</h2>
+    <h2 class="text-display-sm mb-4">Price Comparison: Europe vs. US vs. China (2008-{stats.latest.year})</h2>
     <p class="text-ink-600 mb-6 max-w-2xl">EU industrial electricity prices have diverged sharply from competitors, especially since 2021.</p>
     <div class="chart-container">
       <div id="price-comparison-main" class="h-[400px]">
@@ -65,7 +75,7 @@ const lastUpdated = new Date(energyData.metadata.lastUpdated);
 
   <!-- Country breakdown -->
   <div class="mb-12">
-    <h2 class="text-display-sm mb-4">EU Country Breakdown (2024)</h2>
+    <h2 class="text-display-sm mb-4">EU Country Breakdown ({stats.latest.year})</h2>
     <p class="text-ink-600 mb-6">Prices vary significantly across the EU. Countries with nuclear (France, Sweden) have lower prices.</p>
     <div class="chart-container">
       <div id="country-breakdown" class="h-[350px]">
@@ -77,7 +87,7 @@ const lastUpdated = new Date(energyData.metadata.lastUpdated);
   <!-- Price ratio over time -->
   <div class="mb-12">
     <h2 class="text-display-sm mb-4">EU/US Price Ratio Over Time</h2>
-    <p class="text-ink-600 mb-6">The price disadvantage has grown from 1.7× in 2010 to 2.5× in 2024.</p>
+    <p class="text-ink-600 mb-6">The price disadvantage has grown over time, reaching {ratioDisplay}× in {stats.latest.year}.</p>
     <div class="chart-container">
       <div id="price-ratio" class="h-[300px]">
         <p class="text-ink-400 text-sm">Loading...</p>
@@ -152,46 +162,29 @@ const lastUpdated = new Date(energyData.metadata.lastUpdated);
 <script>
   import * as Plot from '@observablehq/plot';
   import energyData from '../../data/energy-prices.json';
+  import { createResponsiveChart } from '../../lib/charts';
+  import {
+    energyPriceColors,
+    getEnergyPriceProjectionSeries,
+    getEnergyPriceRatioSeries,
+    getEnergyPriceSeries,
+    getSortedCountryBreakdown,
+  } from '../../lib/energy-prices';
 
   // Transform data for charts
-  const timeSeriesData = energyData.timeSeries.flatMap(d => [
-    { year: d.year, region: 'Europe', price: d.europe },
-    { year: d.year, region: 'United States', price: d.usa },
-    { year: d.year, region: 'China', price: d.china },
-  ]);
-
-  const countryData = energyData.countryBreakdown2024.sort((a, b) => b.price - a.price);
-
-  const ratioData = energyData.timeSeries.map(d => ({
-    year: d.year,
-    ratio: d.europe / d.usa,
-  }));
-
-  const projectionData = [
-    ...energyData.timeSeries.slice(-3).flatMap(d => [
-      { year: d.year, region: 'Europe', price: d.europe, type: 'historical' },
-      { year: d.year, region: 'United States', price: d.usa, type: 'historical' },
-      { year: d.year, region: 'China', price: d.china, type: 'historical' },
-    ]),
-    ...energyData.projections.data.flatMap(d => [
-      { year: d.year, region: 'Europe', price: d.europe, type: 'projection' },
-      { year: d.year, region: 'United States', price: d.usa, type: 'projection' },
-      { year: d.year, region: 'China', price: d.china, type: 'projection' },
-    ]),
-  ];
-
-  // Monochrome color scheme
-  const colors = {
-    domain: ['Europe', 'United States', 'China'],
-    range: ['#1a1a1a', '#666666', '#a4a4a4'],
-  };
+  const timeSeriesData = getEnergyPriceSeries(energyData);
+  const countryData = getSortedCountryBreakdown(energyData);
+  const ratioData = getEnergyPriceRatioSeries(energyData);
+  const projectionData = getEnergyPriceProjectionSeries(energyData);
+  const latestYear = energyData.timeSeries[energyData.timeSeries.length - 1].year;
+  const latestUsPrice = energyData.timeSeries[energyData.timeSeries.length - 1].usa;
+  const projectionEndYear = energyData.projections.data[energyData.projections.data.length - 1].year;
 
   // Main comparison chart
   const mainContainer = document.getElementById('price-comparison-main');
   if (mainContainer) {
-    mainContainer.innerHTML = '';
-    const chart = Plot.plot({
-      width: mainContainer.clientWidth,
+    createResponsiveChart(mainContainer, (width) => Plot.plot({
+      width,
       height: 370,
       marginLeft: 50,
       marginRight: 90,
@@ -199,25 +192,23 @@ const lastUpdated = new Date(energyData.metadata.lastUpdated);
       style: { background: 'transparent', fontSize: '11px', fontFamily: 'Inter, system-ui, sans-serif' },
       x: { label: null, tickFormat: 'd' },
       y: { label: null, grid: true, domain: [0, 200], tickFormat: d => `€${d}` },
-      color: colors,
+      color: energyPriceColors,
       marks: [
         Plot.ruleY([0], { stroke: '#e3e3e3' }),
         Plot.line(timeSeriesData, { x: 'year', y: 'price', stroke: 'region', strokeWidth: d => d.region === 'Europe' ? 2.5 : 1.5 }),
         Plot.text(
-          timeSeriesData.filter(d => d.year === 2024),
+          timeSeriesData.filter(d => d.year === latestYear),
           { x: 'year', y: 'price', text: 'region', dx: 6, textAnchor: 'start', fill: 'region', fontWeight: d => d.region === 'Europe' ? '600' : '400', fontSize: 11 }
         ),
       ],
-    });
-    mainContainer.appendChild(chart);
+    }));
   }
 
   // Country breakdown chart
   const countryContainer = document.getElementById('country-breakdown');
   if (countryContainer) {
-    countryContainer.innerHTML = '';
-    const chart = Plot.plot({
-      width: countryContainer.clientWidth,
+    createResponsiveChart(countryContainer, (width) => Plot.plot({
+      width,
       height: 320,
       marginLeft: 100,
       marginRight: 50,
@@ -239,18 +230,16 @@ const lastUpdated = new Date(energyData.metadata.lastUpdated);
           textAnchor: 'start',
           fontSize: 10,
         }),
-        Plot.ruleX([58], { stroke: '#666666', strokeDasharray: '4,4', strokeWidth: 1.5 }),
+        Plot.ruleX([latestUsPrice], { stroke: '#666666', strokeDasharray: '4,4', strokeWidth: 1.5 }),
       ],
-    });
-    countryContainer.appendChild(chart);
+    }));
   }
 
   // Price ratio chart
   const ratioContainer = document.getElementById('price-ratio');
   if (ratioContainer) {
-    ratioContainer.innerHTML = '';
-    const chart = Plot.plot({
-      width: ratioContainer.clientWidth,
+    createResponsiveChart(ratioContainer, (width) => Plot.plot({
+      width,
       height: 270,
       marginLeft: 50,
       marginBottom: 30,
@@ -262,16 +251,14 @@ const lastUpdated = new Date(energyData.metadata.lastUpdated);
         Plot.areaY(ratioData, { x: 'year', y: 'ratio', fill: '#1a1a1a', fillOpacity: 0.1 }),
         Plot.line(ratioData, { x: 'year', y: 'ratio', stroke: '#1a1a1a', strokeWidth: 2 }),
       ],
-    });
-    ratioContainer.appendChild(chart);
+    }));
   }
 
   // Projections chart
   const projContainer = document.getElementById('projections');
   if (projContainer) {
-    projContainer.innerHTML = '';
-    const chart = Plot.plot({
-      width: projContainer.clientWidth,
+    createResponsiveChart(projContainer, (width) => Plot.plot({
+      width,
       height: 320,
       marginLeft: 50,
       marginRight: 90,
@@ -279,7 +266,7 @@ const lastUpdated = new Date(energyData.metadata.lastUpdated);
       style: { background: 'transparent', fontSize: '11px', fontFamily: 'Inter, system-ui, sans-serif' },
       x: { label: null, tickFormat: 'd' },
       y: { label: null, grid: true, domain: [0, 180], tickFormat: d => `€${d}` },
-      color: colors,
+      color: energyPriceColors,
       marks: [
         Plot.ruleY([0], { stroke: '#e3e3e3' }),
         Plot.line(projectionData.filter(d => d.type === 'historical'), {
@@ -289,12 +276,11 @@ const lastUpdated = new Date(energyData.metadata.lastUpdated);
           x: 'year', y: 'price', stroke: 'region', strokeWidth: d => d.region === 'Europe' ? 2 : 1.5, strokeDasharray: '6,4'
         }),
         Plot.text(
-          projectionData.filter(d => d.year === 2040),
+          projectionData.filter(d => d.year === projectionEndYear),
           { x: 'year', y: 'price', text: 'region', dx: 6, textAnchor: 'start', fill: 'region', fontWeight: d => d.region === 'Europe' ? '600' : '400', fontSize: 11 }
         ),
-        Plot.ruleX([2024], { stroke: '#a4a4a4', strokeDasharray: '2,2' }),
+        Plot.ruleX([latestYear], { stroke: '#a4a4a4', strokeDasharray: '2,2' }),
       ],
-    });
-    projContainer.appendChild(chart);
+    }));
   }
 </script>

@@ -1,12 +1,6 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import ScrollySection from '../../components/ScrollySection.astro';
+import ScrollySection from '../ScrollySection.astro';
 ---
-
-<BaseLayout
-  title="Coal vs Natural Gas: EU Transitional Strategy | PowerEurope"
-  description="Analysis of coal and natural gas as transitional energy sources for Europe, comparing costs, scalability, security, and emissions."
->
   <!-- Hero -->
   <header class="py-20 md:py-32 border-b border-ink-200">
     <div class="container-narrow">
@@ -468,10 +462,9 @@ import ScrollySection from '../../components/ScrollySection.astro';
       </p>
     </div>
   </section>
-</BaseLayout>
-
 <script>
   import * as Plot from '@observablehq/plot';
+  import { createResponsiveChart } from '../../lib/charts';
 
   // Cost comparison data
   const costData = [
@@ -481,12 +474,9 @@ import ScrollySection from '../../components/ScrollySection.astro';
     { factor: 'Carbon (€68/t)', coal: 68, gas: 27 },
   ];
 
-  function renderCostChart(showCarbon: boolean = true) {
-    const container = document.getElementById('cost-chart');
-    if (!container) return;
+  let showCarbon = true;
 
-    container.innerHTML = '';
-
+  function renderCostChart(width: number) {
     const data = showCarbon ? costData : costData.filter(d => d.factor !== 'Carbon (€68/t)');
 
     const coalTotal = data.reduce((sum, d) => sum + d.coal, 0);
@@ -504,8 +494,8 @@ import ScrollySection from '../../components/ScrollySection.astro';
       gasCum += d.gas;
     });
 
-    const chart = Plot.plot({
-      width: container.clientWidth,
+    return Plot.plot({
+      width,
       height: 320,
       marginLeft: 60,
       marginRight: 20,
@@ -549,11 +539,11 @@ import ScrollySection from '../../components/ScrollySection.astro';
       ],
     });
 
-    container.appendChild(chart);
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    renderCostChart(true);
+    const costContainer = document.getElementById('cost-chart');
+    const costChart = costContainer ? createResponsiveChart(costContainer, renderCostChart) : null;
 
     // Cost scrolly listener
     const costScrolly = document.getElementById('cost-scrolly');
@@ -561,21 +551,9 @@ import ScrollySection from '../../components/ScrollySection.astro';
       costScrolly.addEventListener('stepchange', ((e: CustomEvent) => {
         const step = e.detail.element;
         const costType = step.dataset.cost;
-        if (costType === 'baseline') {
-          renderCostChart(false);
-        } else {
-          renderCostChart(true);
-        }
+        showCarbon = costType !== 'baseline';
+        costChart?.render();
       }) as EventListener);
     }
-  });
-
-  // Handle resize
-  let resizeTimeout: ReturnType<typeof setTimeout>;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-      renderCostChart(true);
-    }, 250);
   });
 </script>

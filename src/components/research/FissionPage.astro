@@ -1,12 +1,6 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import ScrollySection from '../../components/ScrollySection.astro';
+import ScrollySection from '../ScrollySection.astro';
 ---
-
-<BaseLayout
-  title="Cutting-Edge Fission Reactor Technologies | PowerEurope"
-  description="A comprehensive analysis of Generation III/III+ reactors, SMRs, and advanced designs - their economics, safety, and fuel cycles."
->
   <!-- Hero -->
   <header class="py-20 md:py-32 border-b border-ink-200">
     <div class="container-narrow">
@@ -720,19 +714,15 @@ import ScrollySection from '../../components/ScrollySection.astro';
       </p>
     </div>
   </section>
-</BaseLayout>
-
 <script>
   import scrollama from 'scrollama';
   import * as Plot from '@observablehq/plot';
+  import { createResponsiveChart } from '../../lib/charts';
 
   // ============================================
   // LCOE Waterfall Chart
   // ============================================
-  function renderLCOEWaterfall() {
-    const container = document.getElementById('lcoe-waterfall-chart');
-    if (!container) return;
-
+  function renderLCOEWaterfall(width: number) {
     // LCOE breakdown data ($/MWh contributions)
     const data = [
       { component: 'Construction\nCapital', value: 28, cumulative: 0 },
@@ -743,8 +733,8 @@ import ScrollySection from '../../components/ScrollySection.astro';
       { component: 'Decommission\n& Waste', value: 2, cumulative: 63 },
     ];
 
-    const chart = Plot.plot({
-      width: container.clientWidth,
+    return Plot.plot({
+      width,
       height: 360,
       marginLeft: 50,
       marginBottom: 70,
@@ -790,17 +780,12 @@ import ScrollySection from '../../components/ScrollySection.astro';
       ],
     });
 
-    container.innerHTML = '';
-    container.appendChild(chart);
   }
 
   // ============================================
   // CapEx vs Build Time Scatter Plot
   // ============================================
-  function renderCapExScatter() {
-    const container = document.getElementById('capex-scatter-chart');
-    if (!container) return;
-
+  function renderCapExScatter(width: number) {
     // Project data: [name, build_time_years, capex_per_kw, region]
     const projects = [
       // Western FOAK (red)
@@ -834,8 +819,8 @@ import ScrollySection from '../../components/ScrollySection.astro';
       'Russia': '#f59e0b',
     };
 
-    const chart = Plot.plot({
-      width: container.clientWidth,
+    return Plot.plot({
+      width,
       height: 400,
       marginLeft: 60,
       marginBottom: 50,
@@ -885,17 +870,12 @@ import ScrollySection from '../../components/ScrollySection.astro';
       ],
     });
 
-    container.innerHTML = '';
-    container.appendChild(chart);
   }
 
   // ============================================
   // Radiotoxicity Over Time Chart
   // ============================================
-  function renderRadiotoxicityChart() {
-    const container = document.getElementById('radiotoxicity-chart');
-    if (!container) return;
-
+  function renderRadiotoxicityChart(width: number) {
     // Generate log-scale data points
     const openCycle: { years: number; toxicity: number }[] = [];
     const closedCycle: { years: number; toxicity: number }[] = [];
@@ -911,8 +891,8 @@ import ScrollySection from '../../components/ScrollySection.astro';
       closedCycle.push({ years, toxicity: closedTox });
     }
 
-    const chart = Plot.plot({
-      width: container.clientWidth,
+    return Plot.plot({
+      width,
       height: 350,
       marginLeft: 60,
       marginBottom: 50,
@@ -970,17 +950,12 @@ import ScrollySection from '../../components/ScrollySection.astro';
       ],
     });
 
-    container.innerHTML = '';
-    container.appendChild(chart);
   }
 
   // ============================================
   // SMR Learning Curve
   // ============================================
-  function renderSMRLearningCurve() {
-    const container = document.getElementById('smr-learning-chart');
-    if (!container) return;
-
+  function renderSMRLearningCurve(width: number) {
     // Learning curve: 10% cost reduction per doubling
     // Cost_n = Cost_1 * n^(log2(0.9))
     const learningRate = 0.9;
@@ -1004,8 +979,8 @@ import ScrollySection from '../../components/ScrollySection.astro';
       { units: 50, label: '50th', cost: foakCost * Math.pow(50, exponent) },
     ];
 
-    const chart = Plot.plot({
-      width: container.clientWidth,
+    return Plot.plot({
+      width,
       height: 350,
       marginLeft: 60,
       marginBottom: 50,
@@ -1058,8 +1033,6 @@ import ScrollySection from '../../components/ScrollySection.astro';
       ],
     });
 
-    container.innerHTML = '';
-    container.appendChild(chart);
   }
 
   // Category data
@@ -1109,23 +1082,25 @@ import ScrollySection from '../../components/ScrollySection.astro';
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    // Render all charts
-    renderLCOEWaterfall();
-    renderCapExScatter();
-    renderRadiotoxicityChart();
-    renderSMRLearningCurve();
+    const lcoeContainer = document.getElementById('lcoe-waterfall-chart');
+    if (lcoeContainer) {
+      createResponsiveChart(lcoeContainer, renderLCOEWaterfall);
+    }
 
-    // Handle resize
-    let resizeTimeout: ReturnType<typeof setTimeout>;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        renderLCOEWaterfall();
-        renderCapExScatter();
-        renderRadiotoxicityChart();
-        renderSMRLearningCurve();
-      }, 250);
-    });
+    const capexContainer = document.getElementById('capex-scatter-chart');
+    if (capexContainer) {
+      createResponsiveChart(capexContainer, renderCapExScatter);
+    }
+
+    const radiotoxicityContainer = document.getElementById('radiotoxicity-chart');
+    if (radiotoxicityContainer) {
+      createResponsiveChart(radiotoxicityContainer, renderRadiotoxicityChart);
+    }
+
+    const smrContainer = document.getElementById('smr-learning-chart');
+    if (smrContainer) {
+      createResponsiveChart(smrContainer, renderSMRLearningCurve);
+    }
 
     // Categories scrolly
     const catScrolly = document.getElementById('categories-scrolly');

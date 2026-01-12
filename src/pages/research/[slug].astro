@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('research');
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props as { entry: CollectionEntry<'research'> };
+const { Content } = await entry.render();
+const { title, description, publishDate, author, category, layout } = entry.data;
+const pageTitle = `${title} | PowerEurope`;
+---
+
+{layout === 'custom' ? (
+  <BaseLayout title={pageTitle} description={description}>
+    <Content />
+  </BaseLayout>
+) : (
+  <ArticleLayout frontmatter={{ title, description, publishDate, author, category }}>
+    <Content />
+  </ArticleLayout>
+)}
