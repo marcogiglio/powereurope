@@ -13,11 +13,11 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props as { entry: CollectionEntry<'research'> };
 const { Content } = await entry.render();
-const { title, description, publishDate, author, category, layout } = entry.data;
+const { title, description, publishDate, author, category, layoutType } = entry.data;
 const pageTitle = `${title} | PowerEurope`;
 ---
 
-{layout === 'custom' ? (
+{layoutType === 'custom' ? (
   <BaseLayout title={pageTitle} description={description}>
     <Content />
   </BaseLayout>

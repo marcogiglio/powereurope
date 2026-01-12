@@ -14,7 +14,7 @@ const research = defineCollection({
   schema: z.object({
     ...baseSchema,
     category: z.literal('research'),
-    layout: z.enum(['article', 'custom']).default('article'),
+    layoutType: z.enum(['article', 'custom']).default('article'),
   }),
 });
 
@@ -23,7 +23,7 @@ const opinion = defineCollection({
   schema: z.object({
     ...baseSchema,
     category: z.literal('opinion'),
-    layout: z.literal('article').default('article'),
+    layoutType: z.literal('article').default('article'),
   }),
 });
 
